@@ -33,15 +33,25 @@ export default function HomePage() {
         <h2 className="text-sm uppercase tracking-[0.18em] text-mist/60">Featured</h2>
         <ul className="space-y-4">
           {featured.map((p) => (
-            <li key={p.name} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <li
+              key={p.name}
+              className="rounded-3xl border border-accent/35 bg-gradient-to-b from-accent/10 to-white/[0.02] p-7 shadow-[0_0_0_1px_rgba(110,168,255,0.08)]"
+            >
               <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <a href={p.href} className="text-lg font-medium no-underline" target="_blank" rel="noreferrer">
+                <a
+                  href={p.href}
+                  className="text-2xl font-semibold tracking-tight no-underline"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {p.name}
                 </a>
-                <span className="text-xs text-accent">featured</span>
+                <span className="rounded-full border border-accent/40 px-2 py-0.5 text-[10px] uppercase tracking-wider text-accent">
+                  featured
+                </span>
               </div>
-              <p className="mt-2 text-sm text-mist/75">{p.blurb}</p>
-              <p className="mt-3 font-mono text-xs text-mist/45">{p.tags.join(" · ")}</p>
+              <p className="mt-3 text-base leading-relaxed text-mist/85">{p.blurb}</p>
+              <p className="mt-4 font-mono text-xs text-mist/45">{p.tags.join(" · ")}</p>
             </li>
           ))}
         </ul>
@@ -52,10 +62,10 @@ export default function HomePage() {
         <ul className="space-y-3">
           {drafts.map((p) => (
             <li key={p.name} className="border-b border-white/5 pb-3">
-              <a href={p.href} className="font-medium no-underline" target="_blank" rel="noreferrer">
+              <a href={p.href} className="text-sm font-medium no-underline" target="_blank" rel="noreferrer">
                 {p.name}
               </a>
-              <p className="mt-1 text-sm text-mist/65">{p.blurb}</p>
+              <p className="mt-1 text-sm text-mist/55">{p.blurb}</p>
             </li>
           ))}
         </ul>

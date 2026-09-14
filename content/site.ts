@@ -17,7 +17,7 @@ export const site = {
   summary:
     "Draft: I build trustworthy decision systems under uncertainty — AI execution control planes and related infrastructure. Portfolio and resume copy still being finalized.",
   verdictOneLiner:
-    "Fail-closed LLM control plane — cheapest qualified model, named drop reasons, receipt for every decision.",
+    "Fail-closed LLM routing — cheapest qualified model, named drop reasons, receipts. Offline fixture proof today; not a live multi-provider production claim.",
 };
 
 export type Project = {
@@ -32,7 +32,7 @@ export const projects: Project[] = [
   {
     name: "Verdict",
     blurb:
-      "Fail-closed LLM control plane — cheapest qualified model, named drop reasons, receipt for every decision. Offline proof path available; live provider demos labeled separately.",
+      "Fail-closed LLM routing — cheapest qualified model, named drop reasons, receipts. Offline fixture proof today; not a live multi-provider production claim.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-core",
     status: "featured",
     tags: ["Python", "routing", "receipts"],
