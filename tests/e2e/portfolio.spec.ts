@@ -35,3 +35,18 @@ test("profile and project links target the verified URLs", async ({ page }) => {
     "https://github.com/mrnicholasbcarter-code/verdict-node",
   ]) await expect(page.locator(`a[href="${href}"]`).first()).toBeVisible();
 });
+
+
+test("career experience is visible on the homepage and every resume", async ({ page }) => {
+  for (const path of ["/", "/resume", "/resume/general", "/resume/full-stack", "/resume/data-ai"]) {
+    await page.goto(path);
+    await expect(page.locator("main").getByText(/20\+ years/).first()).toBeVisible();
+    for (const company of ["AgileThought", "Mad Mobile", "Blue Cross Blue Shield of Michigan"]) {
+      await expect(page.getByRole("heading", { name: new RegExp(company) }).first()).toBeVisible();
+    }
+    if (path !== "/") {
+      await expect(page.getByRole("heading", { name: /Compuware/ }).first()).toBeVisible();
+      await expect(page.getByText(/Lakeland High School/).first()).toBeVisible();
+    }
+  }
+});

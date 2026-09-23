@@ -5,18 +5,18 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name} · AI infrastructure & market systems`, template: `%s · ${site.name}` },
+  title: { default: `${site.name} · Senior Software Engineer · Full Stack, Data & AI`, template: `%s · ${site.name}` },
   description: site.summary,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
     siteName: site.name,
-    title: `${site.name} · AI infrastructure & market systems`,
+    title: `${site.name} · Senior Software Engineer · Full Stack, Data & AI`,
     description: site.summary,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} · AI infrastructure & market systems` }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} · Senior Software Engineer · Full Stack, Data & AI` }],
   },
-  twitter: { card: "summary_large_image", images: ["/opengraph-image"], title: `${site.name} · AI infrastructure & market systems`, description: site.summary },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image"], title: `${site.name} · Senior Software Engineer · Full Stack, Data & AI`, description: site.summary },
   robots: { index: true, follow: true },
 };
 
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <header className="site-header">
             <Link href="/" className="brand" aria-label={`${site.name}, home`}>
               <span className="brand-mark" aria-hidden="true">{site.shortName}</span>
-              <span><strong>{site.name}</strong><small>AI infrastructure &amp; decision systems</small></span>
+              <span><strong>{site.name}</strong><small>Full stack · Data &amp; AI · 20+ years</small></span>
             </Link>
             <nav aria-label="Primary navigation">
               <Link href="/#work">Work</Link>

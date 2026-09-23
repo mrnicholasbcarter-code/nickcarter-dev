@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { projects, resumeVariants, site, skillGroups } from "@/content/site";
+import { careerExperience, careerSummary, education, projects, resumeVariants, site, skillGroups } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -13,7 +13,7 @@ export default function ResumePage() {
   return (
     <>
       <section className="resume-hero">
-        <p className="eyebrow">Technical profile</p>
+        <p className="eyebrow">Professional experience</p>
         <h1>{site.name}</h1>
         <p className="resume-title">{site.title}</p>
         <p className="lede">{site.summary}</p>
@@ -27,19 +27,27 @@ export default function ResumePage() {
       </section>
 
       <section className="section resume-section" aria-labelledby="profile-title">
-        <p className="eyebrow">Professional summary</p><h2 id="profile-title">From the API to the edge cases.</h2>
-        <p className="body-large">I work across Python services and TypeScript applications. My projects explore how software chooses an AI model, keeps a market feed consistent, or decides when a trade should not happen. I care about the boundaries between those decisions and the systems that act on them.</p>
+        <p className="eyebrow">Professional summary</p><h2 id="profile-title">Enterprise experience. Modern engineering.</h2>
+        <p className="body-large">{careerSummary}</p>
+      </section>
+
+      <section className="section resume-section" aria-labelledby="career-experience">
+        <p className="eyebrow">Professional experience</p><h2 id="career-experience">A career in software delivery.</h2>
+        <div className="experience-list">{careerExperience.map((experience) => <article key={`${experience.company}-${experience.period}`}><div><p className="project-eyebrow">{experience.period}</p><h3>{experience.company}</h3><p>{experience.role}</p><p className="muted">{experience.location}</p></div><div><p>{experience.summary}</p><ul>{experience.highlights.map((highlight) => <li key={highlight}><p>{highlight}</p></li>)}</ul></div></article>)}</div>
       </section>
 
       <section className="section resume-section" aria-labelledby="project-experience">
         <p className="eyebrow">Selected project experience</p><h2 id="project-experience">Projects, in detail.</h2>
         <div className="experience-list">{projects.map((project) => <article key={project.name}><div><p className="project-eyebrow">{project.eyebrow}</p><h3><a href={project.href}>{project.name}</a></h3></div><div><p>{project.blurb}</p><p className="muted">{project.proof}</p></div></article>)}</div>
-        <p className="provenance-note">This is a project-based technical profile. Each repository includes implementation details, tests, and current limitations.</p>
       </section>
 
       <section className="section resume-section" aria-labelledby="resume-skills">
         <p className="eyebrow">Technical capabilities</p><h2 id="resume-skills">Tools I work with.</h2>
         <div className="skill-grid">{skillGroups.map((group) => <article key={group.name}><h3>{group.name}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul></article>)}</div>
+      </section>
+      <section className="section resume-section" aria-labelledby="resume-education">
+        <p className="eyebrow">Education</p><h2 id="resume-education">Education.</h2>
+        <div className="experience-list"><article><div><p className="project-eyebrow">{education.year}</p><h3>{education.school}</h3></div><div><p>{education.qualification}</p></div></article></div>
       </section>
     </>
   );

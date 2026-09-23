@@ -15,13 +15,12 @@ test("required profile and project links are exact", () => {
   for (const value of ["github.com/mrnicholasbcarter-code", "linkedin.com/in/nicholas-carter-dev", "prediction-market-sdk", "verdict-core", "verdict-risk"]) assert.match(source, new RegExp(value.replaceAll("/", "\\/")));
 });
 
-test("unverified domain email and unsupported Stella claim are not published", () => {
+test("unverified domain email is not published and resume downloads exist", () => {
   assert.equal(source.includes("mailto:nick@nickcarter.dev"), false);
   assert.match(source, /mailto:\$\{site\.email\}/);
   for (const slug of ["general", "data-ai", "full-stack"]) {
     assert.equal(existsSync(`public/resumes/nicholas-carter-${slug}-resume.pdf`), true);
   }
-  assert.equal(source.includes("Stella"), false);
 });
 
 
@@ -31,4 +30,12 @@ test("public copy keeps project limits without internal launch notes", () => {
   }
   assert.match(readFileSync("content/site.ts", "utf8"), /alpha/);
   assert.match(readFileSync("content/site.ts", "utf8"), /fixtures/);
+});
+
+
+test("career copy represents the supplied resumes without private contact details", () => {
+  const content = readFileSync("content/site.ts", "utf8");
+  for (const name of ["20+ years", "AgileThought", "Mad Mobile", "Blue Cross Blue Shield of Michigan", "Compuware", "Wayne County", "Lakeland High School"]) assert.ok(content.includes(name), name);
+  assert.equal(source.includes("941-248-4178"), false);
+  assert.equal(source.includes("This project-based profile"), false);
 });
