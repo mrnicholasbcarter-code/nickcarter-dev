@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Resume",
   description: `Technical profile and role-focused resume options for ${site.name}.`,
   alternates: { canonical: "/resume" },
+  openGraph: { title: `Resume · ${site.name}`, description: `Technical profile and role-focused resume options for ${site.name}.`, url: "/resume" },
 };
 
 export default function ResumePage() {
@@ -17,12 +18,12 @@ export default function ResumePage() {
         <p className="resume-title">{site.title}</p>
         <p className="lede">{site.summary}</p>
         <div className="resume-meta"><span>{site.location}</span><span>{site.availability}</span></div>
-        <div className="actions no-print"><a className="button button-primary" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a><a className="button button-secondary" href={site.links.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a></div>
+        <div className="actions no-print"><a className="button button-primary" href={`mailto:${site.email}`}>Email</a><a className="button button-secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a><a className="button button-secondary" href={site.links.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a></div>
       </section>
 
       <section className="section" aria-labelledby="resume-options">
-        <div className="section-heading"><div><p className="eyebrow">Role-specific views</p><h2 id="resume-options">Choose the relevant focus.</h2></div><p>These stable web resumes are printable from any modern browser. PDF downloads will follow when source documents are verified.</p></div>
-        <div className="resume-grid">{resumeVariants.map((variant) => <article key={variant.slug}><h3>{variant.label}</h3><p>{variant.focus}</p><Link href={`/resume/${variant.slug}`}>Open {variant.label} resume <span aria-hidden="true">→</span></Link></article>)}</div>
+        <div className="section-heading"><div><p className="eyebrow">Role-specific views</p><h2 id="resume-options">Choose the relevant focus.</h2></div><p>Each evidence-bound resume has a stable web view and a matching PDF download.</p></div>
+        <div className="resume-grid">{resumeVariants.map((variant) => <article key={variant.slug}><h3>{variant.label}</h3><p>{variant.focus}</p><div className="resume-links"><Link href={`/resume/${variant.slug}`}>Open web view <span aria-hidden="true">→</span></Link><a href={`/resumes/nicholas-carter-${variant.slug}-resume.pdf`} download>Download PDF <span aria-hidden="true">↓</span></a></div></article>)}</div>
       </section>
 
       <section className="section resume-section" aria-labelledby="profile-title">

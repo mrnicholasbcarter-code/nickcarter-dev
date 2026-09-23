@@ -14,8 +14,9 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} · AI infrastructure & decision systems`,
     description: site.summary,
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} · AI infrastructure & decision systems` }],
   },
-  twitter: { card: "summary", title: `${site.name} · AI infrastructure & decision systems`, description: site.summary },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image"], title: `${site.name} · AI infrastructure & decision systems`, description: site.summary },
   robots: { index: true, follow: true },
 };
 

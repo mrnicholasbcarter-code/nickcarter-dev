@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import test from "node:test";
 import { join } from "node:path";
 
@@ -17,5 +17,9 @@ test("required profile and project links are exact", () => {
 
 test("unverified domain email and unsupported Stella claim are not published", () => {
   assert.equal(source.includes("mailto:nick@nickcarter.dev"), false);
+  assert.match(source, /mailto:\$\{site\.email\}/);
+  for (const slug of ["general", "data-ai", "full-stack"]) {
+    assert.equal(existsSync(`public/resumes/nicholas-carter-${slug}-resume.pdf`), true);
+  }
   assert.equal(source.includes("Stella"), false);
 });

@@ -1,7 +1,7 @@
 export const site = {
   name: "Nicholas Carter",
   shortName: "NC",
-  title: "Senior / Staff Engineer · AI infrastructure & decision systems",
+  title: "Software engineer · AI infrastructure & decision systems",
   location: "Sarasota, Florida",
   availability: "Open to senior/staff engineering roles and selected client work",
   email: "mr.nicholas.b.carter@gmail.com",

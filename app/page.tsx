@@ -4,8 +4,21 @@ import { engineeringPrinciples, projects, site, skillGroups } from "@/content/si
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
 export default function HomePage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    mainEntity: {
+      "@type": "Person",
+      name: site.name,
+      url: site.url,
+      email: site.email,
+      address: { "@type": "PostalAddress", addressLocality: "Sarasota", addressRegion: "FL", addressCountry: "US" },
+      sameAs: [site.links.github, site.links.linkedin],
+    },
+  };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replaceAll("<", "\\u003c") }} />
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="eyebrow"><span className="status-dot" aria-hidden="true" /> {site.availability}</p>
@@ -55,8 +68,8 @@ export default function HomePage() {
       <section className="contact-panel" aria-labelledby="contact-title">
         <p className="eyebrow">Start a conversation</p>
         <h2 id="contact-title">Building AI infrastructure, developer platforms, or reliable full-stack systems?</h2>
-        <p>I am open to senior/staff roles and selected client work. The domain email will be published after independent routing verification.</p>
-        <div className="actions"><a className="button button-primary" href={site.links.linkedin} target="_blank" rel="noreferrer">Connect on LinkedIn <Arrow /><span className="sr-only"> (opens in a new tab)</span></a><a className="button button-secondary" href={site.links.github} target="_blank" rel="noreferrer">View GitHub <Arrow /><span className="sr-only"> (opens in a new tab)</span></a></div>
+        <p>I am open to senior/staff roles and selected client work. Email me directly or use the profiles below. The domain address will be published only after independent routing verification.</p>
+        <div className="actions"><a className="button button-primary" href={`mailto:${site.email}`}>Email Nicholas</a><a className="button button-secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">Connect on LinkedIn <Arrow /><span className="sr-only"> (opens in a new tab)</span></a><a className="button button-secondary" href={site.links.github} target="_blank" rel="noreferrer">View GitHub <Arrow /><span className="sr-only"> (opens in a new tab)</span></a></div>
       </section>
     </>
   );
