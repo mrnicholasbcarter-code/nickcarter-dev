@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { variant } = await params;
   const item = resumeVariants.find((entry) => entry.slug === variant);
   if (!item) return {};
-  return { title: `${item.label} Resume`, description: `${item.label} technical profile for ${site.name}: ${item.focus}.`, alternates: { canonical: `/resume/${item.slug}` }, openGraph: { title: `${item.label} Resume · ${site.name}`, description: `${item.label} technical profile for ${site.name}: ${item.focus}.`, url: `/resume/${item.slug}` } };
+  return { title: `${item.label} Resume`, description: `${item.label} technical profile for ${site.name}: ${item.focus}.`, alternates: { canonical: `/resume/${item.slug}` }, openGraph: { title: `${item.label} Resume · ${site.name}`, description: `${item.label} technical profile for ${site.name}: ${item.focus}.`, url: `/resume/${item.slug}`, images: ["/opengraph-image"] } };
 }
 
 export default async function ResumeVariant({ params }: Props) {

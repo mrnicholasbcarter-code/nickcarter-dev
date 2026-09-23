@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Resume",
   description: `Technical profile and role-focused resume options for ${site.name}.`,
   alternates: { canonical: "/resume" },
-  openGraph: { title: `Resume · ${site.name}`, description: `Technical profile and role-focused resume options for ${site.name}.`, url: "/resume" },
+  openGraph: { title: `Resume · ${site.name}`, description: `Technical profile and role-focused resume options for ${site.name}.`, url: "/resume", images: ["/opengraph-image"] },
 };
 
 export default function ResumePage() {
