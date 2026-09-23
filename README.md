@@ -1,30 +1,40 @@
 # nickcarter.dev
 
-Personal portfolio + resume site for Nicholas Carter.
+Production portfolio and technical profile for Nicholas Carter. The site is a static-first Next.js application with public claims bounded to repository evidence.
 
-**Status:** shell only. Portfolio and resume copy are still being finished — edit `content/site.ts` rather than inventing marketing claims.
+## Local development
 
-## Local
+Use Node 22 (`.nvmrc`).
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-Build check:
+Quality gate:
 
 ```bash
-npm run build
+npm run check
+npm audit --omit=dev --audit-level=high
 ```
 
-## Deploy
+The gate runs ESLint, TypeScript, content/link tests, and a production build. CI runs the same commands for pushes to `main` and pull requests.
 
-Intended for Vercel. Point `nickcarter.dev` DNS (Cloudflare) at the Vercel project once connected — DNS/host wiring is separate from this repo.
+## Deployment
 
-## Claim hygiene
+The repository is designed for Vercel Git integration:
 
-If mentioning Verdict, keep to the verified one-liner:
+- production branch: `main`
+- install command: `npm ci`
+- build command: `npm run build`
+- framework preset: Next.js
+- Node.js: 22.x
 
-> Fail-closed LLM control plane — cheapest qualified model, named drop reasons, receipt for every decision.
+The existing public Vercel URL is `https://nickcarter-dev.vercel.app`. Durable project linkage, preview-deployment evidence, and the `nickcarter.dev` custom domain require authenticated Vercel/Cloudflare access and are tracked separately.
 
-Do not invent production-adoption, catalog-wide autonomy, or unverified metrics.
+## Contact and resume boundaries
+
+- `nick@nickcarter.dev` is intentionally not published until inbound Cloudflare Email Routing passes independent tests.
+- The role-focused web resumes are print-friendly and use stable routes.
+- PDF downloads and employment history remain withheld until verified source files are available.
+- Verdict claims distinguish credential-free fixture proof from live-provider or production claims.

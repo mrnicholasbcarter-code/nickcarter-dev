@@ -1,44 +1,53 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import "./globals.css";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: `${site.name} · Portfolio`,
-  description: site.verdictOneLiner,
+  metadataBase: new URL(site.url),
+  title: { default: `${site.name} · AI infrastructure & decision systems`, template: `%s · ${site.name}` },
+  description: site.summary,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: site.name,
+    title: `${site.name} · AI infrastructure & decision systems`,
+    description: site.summary,
+  },
+  twitter: { card: "summary", title: `${site.name} · AI infrastructure & decision systems`, description: site.summary },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = { colorScheme: "dark", themeColor: "#07111f" };
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>
-        <div className="mx-auto min-h-screen max-w-3xl px-6 py-10">
-          <header className="mb-12 flex flex-wrap items-baseline justify-between gap-4 border-b border-white/10 pb-6">
-            <div>
-              <Link href="/" className="text-lg font-semibold tracking-tight no-underline">
-                {site.name}
-              </Link>
-              <p className="mt-1 text-sm text-mist/70">{site.title}</p>
-            </div>
-            <nav className="flex gap-5 text-sm text-mist/80">
-              <Link href="/">Home</Link>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <div className="site-shell">
+          <header className="site-header">
+            <Link href="/" className="brand" aria-label={`${site.name}, home`}>
+              <span className="brand-mark" aria-hidden="true">{site.shortName}</span>
+              <span><strong>{site.name}</strong><small>AI infrastructure &amp; decision systems</small></span>
+            </Link>
+            <nav aria-label="Primary navigation">
+              <Link href="/#work">Work</Link>
+              <Link href="/#approach">Approach</Link>
               <Link href="/resume">Resume</Link>
-              <a href={site.links.github} target="_blank" rel="noreferrer">
-                GitHub
-              </a>
-              <a href={site.links.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn
-              </a>
+              <a href={site.links.github} target="_blank" rel="noreferrer">GitHub<span className="sr-only"> (opens in a new tab)</span></a>
             </nav>
           </header>
-          <main>{children}</main>
-          <footer className="mt-16 border-t border-white/10 pt-6 text-xs text-mist/50">
-            <p>{site.verdictOneLiner}</p>
-            <p className="mt-2">Site shell — portfolio &amp; resume copy still being finalized.</p>
+          <main id="main-content">{children}</main>
+          <footer className="site-footer">
+            <div><strong>{site.name}</strong><p>{site.location} · {site.availability}</p></div>
+            <div className="footer-links">
+              <a href={site.links.github}>GitHub</a>
+              <a href={site.links.linkedin}>LinkedIn</a>
+              <Link href="/resume">Resume</Link>
+            </div>
+            <p className="evidence-note">Claims on this site are bounded to public repository evidence. Live-provider availability, adoption, and production scale are not implied.</p>
           </footer>
         </div>
       </body>
