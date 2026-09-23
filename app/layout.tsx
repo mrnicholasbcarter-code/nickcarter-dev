@@ -5,22 +5,22 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name} · AI infrastructure & decision systems`, template: `%s · ${site.name}` },
+  title: { default: `${site.name} · AI infrastructure & market systems`, template: `%s · ${site.name}` },
   description: site.summary,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
     siteName: site.name,
-    title: `${site.name} · AI infrastructure & decision systems`,
+    title: `${site.name} · AI infrastructure & market systems`,
     description: site.summary,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} · AI infrastructure & decision systems` }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} · AI infrastructure & market systems` }],
   },
-  twitter: { card: "summary_large_image", images: ["/opengraph-image"], title: `${site.name} · AI infrastructure & decision systems`, description: site.summary },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image"], title: `${site.name} · AI infrastructure & market systems`, description: site.summary },
   robots: { index: true, follow: true },
 };
 
-export const viewport: Viewport = { colorScheme: "dark", themeColor: "#07111f" };
+export const viewport: Viewport = { colorScheme: "light", themeColor: "#f4f0e8" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <a href={site.links.linkedin}>LinkedIn</a>
               <Link href="/resume">Resume</Link>
             </div>
-            <p className="evidence-note">Claims on this site are bounded to public repository evidence. Live-provider availability, adoption, and production scale are not implied.</p>
+            <p className="footer-colophon">Built with intention. <span className="mono">© {new Date().getFullYear()} · NC</span></p>
           </footer>
         </div>
       </body>

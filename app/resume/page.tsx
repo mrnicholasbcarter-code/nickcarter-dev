@@ -22,23 +22,23 @@ export default function ResumePage() {
       </section>
 
       <section className="section" aria-labelledby="resume-options">
-        <div className="section-heading"><div><p className="eyebrow">Role-specific views</p><h2 id="resume-options">Choose the relevant focus.</h2></div><p>Each evidence-bound resume has a stable web view and a matching PDF download.</p></div>
+        <div className="section-heading"><div><p className="eyebrow">Role-specific views</p><h2 id="resume-options">A closer look at the work.</h2></div><p>Start with the general profile, or choose the projects and skills most relevant to your team. Read online or take a PDF.</p></div>
         <div className="resume-grid">{resumeVariants.map((variant) => <article key={variant.slug}><h3>{variant.label}</h3><p>{variant.focus}</p><div className="resume-links"><Link href={`/resume/${variant.slug}`}>Open web view <span aria-hidden="true">→</span></Link><a href={`/resumes/nicholas-carter-${variant.slug}-resume.pdf`} download>Download PDF <span aria-hidden="true">↓</span></a></div></article>)}</div>
       </section>
 
       <section className="section resume-section" aria-labelledby="profile-title">
-        <p className="eyebrow">Professional summary</p><h2 id="profile-title">Systems that explain their decisions.</h2>
-        <p className="body-large">Nicholas builds public, inspectable software across AI routing, HTTP enforcement, prediction-market data foundations, and quantitative risk. The work emphasizes typed boundaries, deterministic gates, explicit limitations, and reproducible validation.</p>
+        <p className="eyebrow">Professional summary</p><h2 id="profile-title">From the API to the edge cases.</h2>
+        <p className="body-large">I work across Python services and TypeScript applications. My projects explore how software chooses an AI model, keeps a market feed consistent, or decides when a trade should not happen. I care about the boundaries between those decisions and the systems that act on them.</p>
       </section>
 
       <section className="section resume-section" aria-labelledby="project-experience">
-        <p className="eyebrow">Selected project experience</p><h2 id="project-experience">Verified public work.</h2>
+        <p className="eyebrow">Selected project experience</p><h2 id="project-experience">Projects, in detail.</h2>
         <div className="experience-list">{projects.map((project) => <article key={project.name}><div><p className="project-eyebrow">{project.eyebrow}</p><h3><a href={project.href}>{project.name}</a></h3></div><div><p>{project.blurb}</p><p className="muted">{project.proof}</p></div></article>)}</div>
-        <p className="provenance-note"><strong>Employment timeline withheld:</strong> no verified employer/title/date source is present in this repository. This page does not infer one from project ownership.</p>
+        <p className="provenance-note">This is a project-based technical profile. Each repository includes implementation details, tests, and current limitations.</p>
       </section>
 
       <section className="section resume-section" aria-labelledby="resume-skills">
-        <p className="eyebrow">Technical capabilities</p><h2 id="resume-skills">Grouped for fast review.</h2>
+        <p className="eyebrow">Technical capabilities</p><h2 id="resume-skills">Tools I work with.</h2>
         <div className="skill-grid">{skillGroups.map((group) => <article key={group.name}><h3>{group.name}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul></article>)}</div>
       </section>
     </>

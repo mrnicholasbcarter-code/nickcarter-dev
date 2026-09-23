@@ -3,74 +3,70 @@ import { engineeringPrinciples, projects, site, skillGroups } from "@/content/si
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
 
+function SystemDrawing({ market = false }: { market?: boolean }) {
+  return <svg className="system-drawing" viewBox="0 0 480 340" fill="none" aria-hidden="true">
+    {market ? <>
+      <path className="drawing-grid" d="M40 70H440M40 120H440M40 170H440M40 220H440M40 270H440M120 45V290M200 45V290M280 45V290M360 45V290" />
+      <path className="drawing-line" d="M40 252H104V227H152V195H201V173H239V149" />
+      <path className="drawing-accent" d="M239 149H281V121H324V97H385V71H440" />
+      <path className="drawing-dash" d="M239 45V290" />
+      <text x="40" y="30">L2 / ORDER BOOK</text><text x="40" y="318">BID</text><text x="390" y="318">ASK</text>
+      <circle cx="239" cy="149" r="6" className="drawing-dot" />
+    </> : <>
+      <path className="drawing-grid" d="M40 65H440M40 125H440M40 185H440M40 245H440M100 35V305M170 35V305M240 35V305M310 35V305M380 35V305" />
+      <path className="drawing-line" d="M45 170H135M345 170H435M240 75V115M240 225V285" />
+      <path className="drawing-accent" d="M240 65L345 170L240 275L135 170Z" />
+      <rect x="188" y="142" width="104" height="56" className="drawing-box" />
+      <text x="240" y="175" textAnchor="middle">POLICY</text>
+      <circle cx="45" cy="170" r="5" className="drawing-dot" /><circle cx="435" cy="170" r="5" className="drawing-dot" />
+      <text x="40" y="145">REQUEST</text><text x="373" y="145">EXECUTE</text>
+      <text x="240" y="40" textAnchor="middle">CAPABILITY / PRIVACY</text>
+      <text x="240" y="316" textAnchor="middle">DECISION + RECEIPT</text>
+    </>}
+  </svg>;
+}
+
 export default function HomePage() {
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    mainEntity: {
-      "@type": "Person",
-      name: site.name,
-      url: site.url,
-      email: site.email,
+    "@context": "https://schema.org", "@type": "ProfilePage",
+    mainEntity: { "@type": "Person", name: site.name, url: site.url, email: site.email,
       address: { "@type": "PostalAddress", addressLocality: "Sarasota", addressRegion: "FL", addressCountry: "US" },
-      sameAs: [site.links.github, site.links.linkedin],
-    },
+      sameAs: [site.links.github, site.links.linkedin] },
   };
-  return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replaceAll("<", "\\u003c") }} />
-      <section className="hero" aria-labelledby="hero-title">
-        <div className="hero-copy">
-          <p className="eyebrow"><span className="status-dot" aria-hidden="true" /> {site.availability}</p>
-          <h1 id="hero-title">Engineering systems that make <em>uncertainty explicit.</em></h1>
-          <p className="lede">{site.summary}</p>
-          <div className="actions">
-            <a className="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
-            <Link className="button button-secondary" href="/resume">Review resume</Link>
+  return <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replaceAll("<", "\\u003c") }} />
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="hero-kicker"><p className="eyebrow">Independent thinking. Dependable systems.</p><span className="mono">Sarasota, FL / Available for work</span></div>
+      <div className="hero-copy">
+        <h1 id="hero-title">Good systems.<br /><em>Clear decisions.</em></h1>
+        <div className="hero-intro"><p className="lede">{site.summary}</p><div className="actions"><a className="text-link" href="#work">Explore selected work <span aria-hidden="true">↓</span></a><Link className="text-link quiet-link" href="/resume">Review resume <Arrow /></Link></div></div>
+      </div>
+      <aside className="hero-aside" aria-label="Engineering focus"><div className="figure-label"><span>Field notes / 001</span><span>Systems engineering</span></div><SystemDrawing /><p>Make the boundary explicit.<br />Make the decision inspectable.</p><span className="aside-note mono">AI infrastructure · Quantitative systems</span></aside>
+      <div className="hero-bottom"><span className="status"><span className="status-dot" aria-hidden="true" />{site.availability}</span><span className="mono">Selected work, below ↓</span></div>
+    </section>
+
+    <section className="section work-section" id="work" aria-labelledby="work-title">
+      <div className="section-heading"><div><p className="eyebrow">01 / Selected work</p><h2 id="work-title">The work, <em>in practice.</em></h2></div><p>From model routing to market infrastructure.<br />A few systems I’m building, and the choices behind them.</p></div>
+      <div className="project-grid">
+        {projects.map((project, index) => <article className={`project-story project-${index + 1}`} key={project.name}>
+          <div className="project-content"><div className="project-meta"><span className="mono">0{index + 1}</span><p className="project-eyebrow">{project.eyebrow}</p></div>
+            <h3><a href={project.href} target="_blank" rel="noreferrer">{project.name} <Arrow /><span className="sr-only"> (opens in a new tab)</span></a></h3>
+            <p className="project-blurb">{project.blurb}</p>
+            <ul className="tags" aria-label={`${project.name} technologies`}>{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
           </div>
-        </div>
-        <aside className="signal-card" aria-label="Engineering focus">
-          <div className="signal-top"><span>Current focus</span><span className="mono">01 / 03</span></div>
-          <p className="signal-title">Policy-gated<br />AI execution</p>
-          <div className="signal-flow" aria-label="Tasks pass through policy and evidence gates before execution">
-            <span>task</span><i aria-hidden="true" /><span>policy</span><i aria-hidden="true" /><span>evidence</span><i aria-hidden="true" /><strong>execute</strong>
-          </div>
-          <p className="signal-caption">Fail closed when capability, health, privacy, or proof is unknown.</p>
-        </aside>
-      </section>
+          {index < 2 ? <figure className="project-figure"><SystemDrawing market={index === 1} /><figcaption><span>Fig. 0{index + 1}</span>{index === 0 ? "Constraints before confidence." : "A consistent view of a moving market."}</figcaption></figure> : <div className="small-diagram" aria-hidden="true">{index === 2 ? <><span>capital</span><i /><span className="diagram-gate">risk gate</span><i /><span>position</span></> : <><span>request</span><i /><span className="diagram-gate">middleware</span><i /><span>provider</span></>}</div>}
+          <p className="project-proof"><strong>{index === 3 ? "Development status" : "Scope & status"}</strong>{project.proof}</p>
+        </article>)}
+      </div>
+    </section>
 
-      <section className="section" id="work" aria-labelledby="work-title">
-        <div className="section-heading"><div><p className="eyebrow">Selected work</p><h2 id="work-title">Built to be inspected.</h2></div><p>Public repositories with explicit proof boundaries, limitations, and reproducible paths.</p></div>
-        <div className="project-grid">
-          {projects.map((project, index) => (
-            <article className={`project-card ${project.featured ? "project-featured" : ""}`} key={project.name}>
-              <div className="project-index mono">0{index + 1}</div>
-              <p className="project-eyebrow">{project.eyebrow}</p>
-              <h3><a href={project.href} target="_blank" rel="noreferrer">{project.name}<span className="sr-only"> (opens in a new tab)</span> <Arrow /></a></h3>
-              <p className="project-blurb">{project.blurb}</p>
-              <p className="project-proof"><strong>Evidence boundary</strong>{project.proof}</p>
-              <ul className="tags" aria-label={`${project.name} technologies`}>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
-            </article>
-          ))}
-        </div>
-      </section>
+    <section className="section approach" id="approach" aria-labelledby="approach-title">
+      <div className="approach-intro"><p className="eyebrow">02 / How I think</p><h2 id="approach-title">Reliability is<br />a design <em>decision.</em></h2><p>Not a layer added at the end. A set of choices made from the first boundary onward.</p></div>
+      <ol className="principle-list">{engineeringPrinciples.map((item, index) => <li key={item.title}><span className="mono">0{index + 1}</span><div><h3>{item.title}</h3><p>{item.copy}</p></div></li>)}</ol>
+    </section>
 
-      <section className="section approach" id="approach" aria-labelledby="approach-title">
-        <div className="section-heading"><div><p className="eyebrow">Engineering approach</p><h2 id="approach-title">Trust is a system property.</h2></div><p>Controls belong in the architecture. Proof belongs beside the claim.</p></div>
-        <ol className="principle-list">{engineeringPrinciples.map((item, index) => <li key={item.title}><span className="mono">0{index + 1}</span><div><h3>{item.title}</h3><p>{item.copy}</p></div></li>)}</ol>
-      </section>
+    <section className="section capabilities" aria-labelledby="skills-title"><div className="section-heading"><div><p className="eyebrow">03 / Working toolkit</p><h2 id="skills-title">Depth, with range.</h2></div><p>The tools change. The care for interfaces, failure modes, and maintainability doesn’t.</p></div><div className="skill-grid">{skillGroups.map(group => <article key={group.name}><h3>{group.name}</h3><ul>{group.skills.map(skill => <li key={skill}>{skill}</li>)}</ul></article>)}</div></section>
 
-      <section className="section" aria-labelledby="skills-title">
-        <div className="section-heading compact"><div><p className="eyebrow">Capabilities</p><h2 id="skills-title">Across the stack.</h2></div></div>
-        <div className="skill-grid">{skillGroups.map((group) => <article key={group.name}><h3>{group.name}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul></article>)}</div>
-      </section>
-
-      <section className="contact-panel" aria-labelledby="contact-title">
-        <p className="eyebrow">Start a conversation</p>
-        <h2 id="contact-title">Building AI infrastructure, developer platforms, or reliable full-stack systems?</h2>
-        <p>I am open to senior/staff roles and selected client work. Email me directly or use the profiles below. The domain address will be published only after independent routing verification.</p>
-        <div className="actions"><a className="button button-primary" href={`mailto:${site.email}`}>Email Nicholas</a><a className="button button-secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">Connect on LinkedIn <Arrow /><span className="sr-only"> (opens in a new tab)</span></a><a className="button button-secondary" href={site.links.github} target="_blank" rel="noreferrer">View GitHub <Arrow /><span className="sr-only"> (opens in a new tab)</span></a></div>
-      </section>
-    </>
-  );
+    <section className="contact-panel" aria-labelledby="contact-title"><div><p className="eyebrow">Have something in mind?</p><h2 id="contact-title">Let’s build something<br /><em>worth relying on.</em></h2></div><div className="contact-details"><p>I’m interested in thoughtful teams and hard engineering problems. Open to senior/staff roles and selected client work.</p><a className="contact-link" href={`mailto:${site.email}`}>Email Nicholas <Arrow /></a><div className="contact-social"><a href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /><span className="sr-only"> (opens in a new tab)</span></a><a href={site.links.github} target="_blank" rel="noreferrer">GitHub <Arrow /><span className="sr-only"> (opens in a new tab)</span></a></div></div></section>
+  </>;
 }

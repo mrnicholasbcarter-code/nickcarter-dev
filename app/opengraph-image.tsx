@@ -1,19 +1,19 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/content/site";
 
-export const alt = `${site.name} · AI infrastructure & decision systems`;
+export const alt = `${site.name} · Software engineer · AI infrastructure & market systems`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function Image() {
   return new ImageResponse(
-    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "76px", background: "#07111f", color: "#eaf1fb", fontFamily: "sans-serif" }}>
-      <div style={{ display: "flex", color: "#74e3c1", fontSize: 25, letterSpacing: "0.16em", textTransform: "uppercase" }}>AI infrastructure · decision systems</div>
+    <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "64px 76px", background: "#f4f0e8", color: "#25241f", fontFamily: "sans-serif" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid #ccc5b8", paddingBottom: 24, fontSize: 20 }}><span>NC / SOFTWARE ENGINEER</span><span>SARASOTA, FLORIDA</span></div>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <div style={{ display: "flex", fontSize: 76, fontWeight: 700 }}>{site.name}</div>
-        <div style={{ display: "flex", marginTop: "22px", color: "#aebdd0", fontSize: 34 }}>Software systems that make uncertainty explicit.</div>
+        <div style={{ display: "flex", fontSize: 88, letterSpacing: "-0.055em", fontFamily: "serif" }}>{site.name}</div>
+        <div style={{ display: "flex", marginTop: 26, fontSize: 32, color: "#555247" }}>AI infrastructure. Market data. The decisions in between.</div>
       </div>
-      <div style={{ display: "flex", color: "#7f93aa", fontSize: 24 }}>nickcarter.dev</div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", color: "#934329", fontSize: 24 }}><span>Selected work & engineering notes</span><span>nickcarter.dev ↗</span></div>
     </div>,
     size,
   );

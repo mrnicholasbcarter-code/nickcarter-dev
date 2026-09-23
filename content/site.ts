@@ -1,13 +1,13 @@
 export const site = {
   name: "Nicholas Carter",
   shortName: "NC",
-  title: "Software engineer · AI infrastructure & decision systems",
+  title: "Software engineer · AI infrastructure & market systems",
   location: "Sarasota, Florida",
   availability: "Open to senior/staff engineering roles and selected client work",
   email: "mr.nicholas.b.carter@gmail.com",
   url: "https://nickcarter.dev",
   summary:
-    "I build policy-gated AI infrastructure, evidence-bound software automation, and quantitative risk systems. My work favors deterministic controls, explicit failure modes, and proof that can be reproduced.",
+    "I build software that decides which AI model can handle a request, keeps market data in sync, and checks trading risk. I work in Python and TypeScript, with a focus on clear rules and failures I can reproduce.",
   links: {
     github: "https://github.com/mrnicholasbcarter-code",
     linkedin: "https://www.linkedin.com/in/nicholas-carter-dev",
@@ -27,42 +27,42 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: "Verdict",
-    eyebrow: "AI control plane",
+    eyebrow: "Choosing models within limits",
     blurb:
-      "A fail-closed control plane that filters models through deterministic capability, privacy, reliability, and policy gates before advisory ranking.",
+      "Model routing with rules that ranking cannot override. Verdict checks capability, privacy, reliability, and policy first, then ranks only the models that qualify.",
     proof:
-      "The public credential-free path uses checked-in fixtures and simulated failure. It proves routing behavior and receipts—not live-provider availability, adoption, or production scale.",
+      "Try routing and simulated failures without API keys. The demo uses fixtures, not live providers.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-core",
     tags: ["Python", "policy gates", "receipts", "failover"],
     featured: true,
   },
   {
     name: "Prediction Market SDK",
-    eyebrow: "Async market infrastructure",
+    eyebrow: "Keeping market data in sync",
     blurb:
-      "A typed Python foundation for Kalshi REST workflows, reusable L2 order-book state, and resilient WebSocket lifecycle management.",
+      "A typed, async Python SDK for Kalshi market data and orders. Reusable L2 order books track snapshots and deltas, while a WebSocket layer manages connections and subscriptions.",
     proof:
-      "Kalshi signing, order workflows, order-book snapshots and deltas, and subscription management are implemented and tested. Polymarket signing and live-order safety remain limited.",
+      "Kalshi signing, order workflows, and market-data handling are tested. Polymarket signing and live-order safeguards are still limited.",
     href: "https://github.com/mrnicholasbcarter-code/prediction-market-sdk",
     tags: ["Python", "AsyncIO", "WebSockets", "msgspec"],
   },
   {
     name: "Verdict Risk",
-    eyebrow: "Deterministic risk",
+    eyebrow: "Checking risk before action",
     blurb:
-      "Pure-functional capital protection primitives that separate risk decisions from persistence and network I/O.",
+      "Trading-risk checks for drawdown, position size, cluster exposure, and Kelly sizing. Pure functions keep the decisions separate from storage and network calls, so the same inputs give the same answer.",
     proof:
-      "The repository exposes deterministic drawdown, position, cluster exposure, and Kelly-sizing gates with property-based tests.",
+      "Property-based tests exercise the risk rules. This is a library of checks, not a trading system.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-risk",
     tags: ["Python", "risk gates", "Hypothesis", "OpenTelemetry"],
   },
   {
     name: "verdict-node",
-    eyebrow: "TypeScript gateway adapter",
+    eyebrow: "Request checks for Node.js apps",
     blurb:
-      "Express and Next.js middleware that checks outgoing OpenAI-compatible requests at an HTTP enforcement boundary.",
+      "Brings request checks into Express and Next.js apps. The middleware checks outgoing OpenAI-compatible requests at the HTTP boundary rather than relying on each caller to apply the rules.",
     proof:
-      "Published as an alpha. The Python/TypeScript envelope contract is still being reconciled and is not presented as complete end-to-end enforcement.",
+      "Published as an alpha. The shared Python/TypeScript request contract is still being aligned; end-to-end enforcement is not complete.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-node",
     tags: ["TypeScript", "Express", "Next.js", "Zod"],
   },
@@ -89,21 +89,21 @@ export const skillGroups = [
 
 export const engineeringPrinciples = [
   {
-    title: "Hard gates before scores",
-    copy: "Eligibility, privacy, reliability, and policy are constraints—not preferences that a confident heuristic can override.",
+    title: "Rules before rankings",
+    copy: "I keep eligibility and policy checks separate from ranking. A higher score should never make an ineligible model acceptable.",
   },
   {
-    title: "Unknown is not healthy",
-    copy: "Missing evidence produces a named block. It does not become an optimistic default or a marketing claim.",
+    title: "Make uncertainty visible",
+    copy: "When a required check has no answer, I stop the request and explain what is missing instead of assuming it is safe.",
   },
   {
-    title: "Proof ships with the system",
-    copy: "Fixtures, tests, receipts, and explicit maturity boundaries make a capability inspectable without private context.",
+    title: "Make failures repeatable",
+    copy: "I use fixtures, tests, and decision receipts so someone else can follow the result and reproduce what went wrong.",
   },
 ] as const;
 
 export const resumeVariants = [
   { slug: "general", label: "General", focus: "AI infrastructure, developer platforms, and quantitative systems" },
-  { slug: "data-ai", label: "Data & AI", focus: "policy-gated AI systems, async data flows, and reproducible evidence" },
+  { slug: "data-ai", label: "Data & AI", focus: "AI model routing, async market data, and reproducible testing" },
   { slug: "full-stack", label: "Full Stack", focus: "TypeScript, React, Node.js, Python services, and platform reliability" },
 ] as const;

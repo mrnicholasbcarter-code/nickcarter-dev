@@ -23,3 +23,12 @@ test("unverified domain email and unsupported Stella claim are not published", (
   }
   assert.equal(source.includes("Stella"), false);
 });
+
+
+test("public copy keeps project limits without internal launch notes", () => {
+  for (const phrase of ["Employment timeline withheld", "domain address will be published", "no verified employer/title/date source"]) {
+    assert.equal(source.includes(phrase), false, phrase);
+  }
+  assert.match(readFileSync("content/site.ts", "utf8"), /alpha/);
+  assert.match(readFileSync("content/site.ts", "utf8"), /fixtures/);
+});
