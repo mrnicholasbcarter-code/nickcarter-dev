@@ -11,7 +11,7 @@ export default function Image() {
       <div style={{ display: "flex", justifyContent: "space-between", borderBottom: "1px solid #ccc5b8", paddingBottom: 24, fontSize: 20 }}><span>NC / SOFTWARE ENGINEER</span><span>SARASOTA, FLORIDA</span></div>
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ display: "flex", fontSize: 88, letterSpacing: "-0.055em", fontFamily: "serif" }}>{site.name}</div>
-        <div style={{ display: "flex", marginTop: 26, fontSize: 32, color: "#555247" }}>20+ years. Full stack. Data & AI.</div>
+        <div style={{ display: "flex", marginTop: 26, fontSize: 32, color: "#555247" }}>Full-stack depth. Twenty years of delivery.</div>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", color: "#934329", fontSize: 24 }}><span>Software, from idea to delivery</span><span>nickcarter.dev ↗</span></div>
     </div>,

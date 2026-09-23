@@ -50,3 +50,12 @@ test("career experience is visible on the homepage and every resume", async ({ p
     }
   }
 });
+
+
+test("homepage leads with engineering identity, contact, and attributed career work", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Senior engineer.");
+  await expect(page.getByRole("link", { name: "Discuss a role" })).toHaveAttribute("href", "mailto:mr.nicholas.b.carter@gmail.com");
+  const career = page.locator("#experience");
+  for (const text of ["Deloitte", "Bankers Surety", "VF Corp", "Member Portal R2"]) await expect(career).toContainText(text);
+});

@@ -7,7 +7,7 @@ export const site = {
   email: "mr.nicholas.b.carter@gmail.com",
   url: "https://nickcarter.dev",
   summary:
-    "I’m a software engineer with 20+ years of experience building web, mobile, API, and platform software across enterprise consulting, healthcare, and retail. Today I bring that foundation to AI infrastructure and real-time data systems, with the same focus on useful products, accessible experiences, and reliable delivery.",
+    "I’m Nicholas Carter, a software engineer with 20+ years across web, mobile, and backend development. At AgileThought, I delivered software for Deloitte and Bankers Surety. At Mad Mobile, I led retail application delivery. My work now extends into data systems and AI infrastructure.",
   links: {
     github: "https://github.com/mrnicholasbcarter-code",
     linkedin: "https://www.linkedin.com/in/nicholas-carter-dev",
@@ -29,9 +29,9 @@ export const projects: Project[] = [
     name: "Verdict",
     eyebrow: "Choosing models within limits",
     blurb:
-      "Model routing with rules that ranking cannot override. Verdict checks capability, privacy, reliability, and policy first, then ranks only the models that qualify.",
+      "An AI model can rank first and still be the wrong choice for a request. I built Verdict to check capability, privacy, reliability, and policy before ranking, with a receipt that explains each routing decision.",
     proof:
-      "Try routing and simulated failures without API keys. The demo uses fixtures, not live providers.",
+      "The repository includes a credential-free routing demo with simulated failures. It uses fixtures, not live providers.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-core",
     tags: ["Python", "policy gates", "receipts", "failover"],
     featured: true,
@@ -40,7 +40,7 @@ export const projects: Project[] = [
     name: "Prediction Market SDK",
     eyebrow: "Keeping market data in sync",
     blurb:
-      "A typed, async Python SDK for Kalshi market data and orders. Reusable L2 order books track snapshots and deltas, while a WebSocket layer manages connections and subscriptions.",
+      "Market feeds need more than an open connection. I built typed Kalshi API workflows, reusable order-book state, and WebSocket subscription and reconnect handling so applications can work with the data instead of rebuilding the plumbing.",
     proof:
       "Kalshi signing, order workflows, and market-data handling are tested. Polymarket signing and live-order safeguards are still limited.",
     href: "https://github.com/mrnicholasbcarter-code/prediction-market-sdk",
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     name: "Verdict Risk",
     eyebrow: "Checking risk before action",
     blurb:
-      "Trading-risk checks for drawdown, position size, cluster exposure, and Kelly sizing. Pure functions keep the decisions separate from storage and network calls, so the same inputs give the same answer.",
+      "Risk rules should be testable without placing a trade. This library separates drawdown, position, exposure, and sizing checks from storage and network calls, keeping each decision deterministic.",
     proof:
       "Property-based tests exercise the risk rules. This is a library of checks, not a trading system.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-risk",
@@ -60,7 +60,7 @@ export const projects: Project[] = [
     name: "verdict-node",
     eyebrow: "Request checks for Node.js apps",
     blurb:
-      "Brings request checks into Express and Next.js apps. The middleware checks outgoing OpenAI-compatible requests at the HTTP boundary rather than relying on each caller to apply the rules.",
+      "A TypeScript adapter for applying request checks in Express and Next.js. It moves checks to the outgoing HTTP boundary, rather than asking every caller to implement them separately.",
     proof:
       "Published as an alpha. The shared Python/TypeScript request contract is still being aligned; end-to-end enforcement is not complete.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-node",
@@ -89,16 +89,16 @@ export const skillGroups = [
 
 export const engineeringPrinciples = [
   {
-    title: "Start with the people using it",
-    copy: "I work with clients, product, UX, and QA to understand the problem before choosing the implementation. Accessibility and clear workflows matter as much as the technology behind them.",
+    title: "Work through the requirements",
+    copy: "Consulting taught me to turn business requirements into implementation plans with clients, product, UX, and QA. The work starts with understanding the workflow—not picking a framework.",
   },
   {
-    title: "Own the whole path",
-    copy: "I connect the interface, services, data, and release process. Clear boundaries and reusable components make a system easier to maintain, and code review and mentoring help the team carry it forward.",
+    title: "Stay involved through release",
+    copy: "At Bankers Surety, my work spanned C# services, Angular interfaces, integrations, and build pipelines. I’m comfortable following a feature across those boundaries and into release support.",
   },
   {
-    title: "Make reliability part of the design",
-    copy: "I build in tests, diagnostics, and explicit failure handling rather than leaving them for the release. In AI systems, that also means checking policy before ranking models and keeping decisions traceable.",
+    title: "Help the team carry it forward",
+    copy: "At Mad Mobile, I combined hands-on development with code review, mentoring, and delivery coordination. I care about software the team can understand and maintain after the first release.",
   },
 ] as const;
 
@@ -109,7 +109,7 @@ export const resumeVariants = [
 ] as const;
 
 export const careerSummary =
-  "I’ve spent 20+ years building software for people and organizations with very different needs. My early work covered CMS, intranet, e-commerce, and interactive applications. I went on to work on GM infotainment at Compuware, lead front-end development for healthcare member experiences at Blue Cross Blue Shield of Michigan, and lead web and mobile delivery for retail and supply-chain clients at Mad Mobile. At AgileThought, I delivered enterprise applications for Deloitte and Bankers Surety, working across interfaces, backend services, integrations, and releases. Along the way, I’ve mentored developers and worked closely with clients, product, UX, and QA teams. My independent work now brings that experience to AI infrastructure, real-time trading data, and ML systems using Python and TypeScript. I still care about the same things: understanding the problem, making the experience usable, and building software that a team can understand and maintain.";
+  "My career started with CMS, e-commerce, and interactive web applications. Since then, I’ve worked on GM infotainment, healthcare member portals, retail point-of-sale systems, and enterprise platforms. I’ve been a hands-on developer, a team lead, and a consultant working directly with clients. The common thread is connecting the user experience to the services and delivery work behind it. My current AI and data projects build on that foundation.";
 
 export const careerExperience = [
   {
@@ -130,7 +130,7 @@ export const careerExperience = [
     role: "Senior Consultant",
     period: "Jan 2018 – Nov 2023",
     location: "Tampa / St. Petersburg, FL",
-    summary: "Delivered enterprise applications for Deloitte and Bankers Surety, turning client requirements into maintainable software and reliable releases.",
+    summary: "Shipped React features for Deloitte’s Symphony platform and owned major portions of Bankers Surety’s next-generation platform—from C# services and Angular UI to integrations, build pipelines, and release support.",
     highlights: [
       "Shipped React-based features on Deloitte’s Symphony platform in collaboration with product, UX, QA, and engineering teams.",
       "Owned major portions of Bankers Surety’s next-generation platform across C# services and middleware, Angular UI, API integrations, and build pipelines.",
@@ -143,7 +143,7 @@ export const careerExperience = [
     role: "Senior Software Developer, Team Lead",
     period: "Jul 2016 – Jan 2018",
     location: "Tampa, FL",
-    summary: "Led full-stack web and mobile engineering for enterprise retail and supply-chain applications using Node.js, Koa, GraphQL, React, React Native, and Cordova.",
+    summary: "Led web and mobile delivery for VF Corp’s Concierge MPOS across brands including Vans, Timberland, and The North Face. Also contributed to Sysco inventory and ordering applications, while mentoring developers and coordinating delivery.",
     highlights: [
       "Delivered VF Corp Concierge MPOS across US and European brands including Vans, Timberland, and The North Face.",
       "Contributed to Sysco inventory-management and conversational ordering applications, connecting user experiences to backend APIs and business workflows.",
@@ -155,7 +155,7 @@ export const careerExperience = [
     role: "Senior Web Developer / Senior Web Designer",
     period: "Oct 2013 – Jul 2016",
     location: "Detroit, MI",
-    summary: "Led front-end development for Member Portal R2 and related member-facing healthcare experiences in a regulated enterprise environment.",
+    summary: "Led front-end development for Member Portal R2, bringing responsive interfaces, reusable patterns, and WCAG accessibility practices to member-facing healthcare software.",
     highlights: [
       "Built responsive interfaces and reusable front-end patterns with Backbone, jQuery, Adobe CQ/CMS, HTML5, and CSS3.",
       "Partnered with UX, product, content, and engineering teams on WCAG accessibility, cross-browser support, and maintainability.",

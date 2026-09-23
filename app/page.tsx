@@ -36,24 +36,24 @@ export default function HomePage() {
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replaceAll("<", "\\u003c") }} />
     <section className="hero" aria-labelledby="hero-title">
-      <div className="hero-kicker"><p className="eyebrow">20+ years of building software.</p><span className="mono">Sarasota, FL / Available for work</span></div>
+      <div className="hero-kicker"><p className="eyebrow">Senior software engineer · 20+ years</p><span className="mono">Sarasota, FL / Available for work</span></div>
       <div className="hero-copy">
-        <h1 id="hero-title">Built for people.<br /><em>Made to last.</em></h1>
-        <div className="hero-intro"><p className="lede">{site.summary}</p><div className="actions"><a className="text-link" href="#work">Explore recent work <span aria-hidden="true">↓</span></a><Link className="text-link quiet-link" href="/resume">Review resume <Arrow /></Link></div></div>
+        <h1 id="hero-title">Senior engineer.<br /><em>Across the stack.</em></h1>
+        <div className="hero-intro"><p className="lede">{site.summary}</p><div className="actions"><a className="text-link" href={`mailto:${site.email}`}>Discuss a role <Arrow /></a><Link className="text-link quiet-link" href="/resume">Review resume <Arrow /></Link></div></div>
       </div>
-      <aside className="hero-aside" aria-label="Engineering focus"><div className="figure-label"><span>Current work / AI</span><span>Systems engineering</span></div><SystemDrawing /><p>New problems.<br />Two decades of perspective.</p><span className="aside-note mono">Full stack · Data & AI · Technical leadership</span></aside>
+      <aside className="hero-aside" aria-label="Engineering focus"><div className="figure-label"><span>Current work / AI</span><span>Systems engineering</span></div><SystemDrawing /><p>Current focus:<br />AI systems that explain their decisions.</p><span className="aside-note mono">Model routing / policy checks / decision receipts</span></aside>
       <div className="hero-bottom"><span className="status"><span className="status-dot" aria-hidden="true" />{site.availability}</span><span className="mono">Experience & recent work ↓</span></div>
     </section>
 
     <section className="section resume-section" id="experience" aria-labelledby="experience-title">
-      <div className="section-heading"><div><p className="eyebrow">01 / A career in software</p><h2 id="experience-title">More than<br /><em>the latest stack.</em></h2></div><p>Enterprise consulting. Retail and mobile. Healthcare. Today, data and AI.</p></div>
+      <div className="section-heading"><div><p className="eyebrow">01 / A career in software</p><h2 id="experience-title">The work behind<br /><em>the experience.</em></h2></div><p>Hands-on engineering and team leadership across consulting, retail, and healthcare.</p></div>
       <p className="body-large">{careerSummary}</p>
       <div className="experience-list">{careerExperience.slice(1, 4).map((role) => <article key={role.company}><div><p className="project-eyebrow">{role.period}</p><h3>{role.company}</h3><p>{role.role}</p></div><div><p>{role.summary}</p></div></article>)}</div>
-      <div className="actions"><Link className="text-link" href="/resume">Explore my full experience <Arrow /></Link></div>
+      <div className="actions"><Link className="text-link" href="/resume">View my full career & resume <Arrow /></Link></div>
     </section>
 
     <section className="section work-section" id="work" aria-labelledby="work-title">
-      <div className="section-heading"><div><p className="eyebrow">02 / Recent independent work</p><h2 id="work-title">What I’m <em>building now.</em></h2></div><p>My recent independent work explores AI infrastructure and market data. It builds on a career delivering enterprise web, mobile, and API platforms.</p></div>
+      <div className="section-heading"><div><p className="eyebrow">02 / Recent independent work</p><h2 id="work-title">What I’m <em>building now.</em></h2></div><p>Independent projects in model routing, market data, and request controls. Each repository shows the implementation and its current scope.</p></div>
       <div className="project-grid">
         {projects.map((project, index) => <article className={`project-story project-${index + 1}`} key={project.name}>
           <div className="project-content"><div className="project-meta"><span className="mono">0{index + 1}</span><p className="project-eyebrow">{project.eyebrow}</p></div>
@@ -68,12 +68,12 @@ export default function HomePage() {
     </section>
 
     <section className="section approach" id="approach" aria-labelledby="approach-title">
-      <div className="approach-intro"><p className="eyebrow">03 / How I work</p><h2 id="approach-title">Experience shapes<br />the <em>approach.</em></h2><p>Years working with clients, designers, and engineering teams have taught me to ask better questions before writing more code.</p></div>
+      <div className="approach-intro"><p className="eyebrow">03 / How I work</p><h2 id="approach-title">From requirements<br /><em>through release.</em></h2><p>The job is more than implementation. It includes the client conversation, the design review, the difficult integration, and helping the next developer understand the code.</p></div>
       <ol className="principle-list">{engineeringPrinciples.map((item, index) => <li key={item.title}><span className="mono">0{index + 1}</span><div><h3>{item.title}</h3><p>{item.copy}</p></div></li>)}</ol>
     </section>
 
-    <section className="section capabilities" aria-labelledby="skills-title"><div className="section-heading"><div><p className="eyebrow">04 / Working toolkit</p><h2 id="skills-title">Depth, with range.</h2></div><p>From accessible interfaces and backend services to real-time data and AI. I choose the tools around the problem, not the other way around.</p></div><div className="skill-grid">{skillGroups.map(group => <article key={group.name}><h3>{group.name}</h3><ul>{group.skills.map(skill => <li key={skill}>{skill}</li>)}</ul></article>)}</div></section>
+    <section className="section capabilities" aria-labelledby="skills-title"><div className="section-heading"><div><p className="eyebrow">04 / Working toolkit</p><h2 id="skills-title">Across the stack.</h2></div><p>React and Angular interfaces. Node.js and C# services. Python data and AI workflows. Architecture, accessibility, and delivery across them.</p></div><div className="skill-grid">{skillGroups.map(group => <article key={group.name}><h3>{group.name}</h3><ul>{group.skills.map(skill => <li key={skill}>{skill}</li>)}</ul></article>)}</div></section>
 
-    <section className="contact-panel" aria-labelledby="contact-title"><div><p className="eyebrow">Have something in mind?</p><h2 id="contact-title">Let’s build something<br /><em>worth relying on.</em></h2></div><div className="contact-details"><p>Need someone who can talk through the requirements, work across the stack, and help a team ship? I’m open to senior/staff engineering roles and selected consulting work.</p><a className="contact-link" href={`mailto:${site.email}`}>Email Nicholas <Arrow /></a><div className="contact-social"><a href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /><span className="sr-only"> (opens in a new tab)</span></a><a href={site.links.github} target="_blank" rel="noreferrer">GitHub <Arrow /><span className="sr-only"> (opens in a new tab)</span></a></div></div></section>
+    <section className="contact-panel" aria-labelledby="contact-title"><div><p className="eyebrow">Hiring or planning a project?</p><h2 id="contact-title">Let’s talk about<br /><em>the work.</em></h2></div><div className="contact-details"><p>I’m open to senior/staff engineering roles and selected consulting work. Tell me about your team, the product, and where you need someone to take ownership.</p><a className="contact-link" href={`mailto:${site.email}`}>Email Nicholas <Arrow /></a><div className="contact-social"><a href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /><span className="sr-only"> (opens in a new tab)</span></a><a href={site.links.github} target="_blank" rel="noreferrer">GitHub <Arrow /><span className="sr-only"> (opens in a new tab)</span></a></div></div></section>
   </>;
 }

@@ -48,7 +48,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <a href={site.links.linkedin}>LinkedIn</a>
               <Link href="/resume">Resume</Link>
             </div>
-            <p className="footer-colophon">Built with intention. <span className="mono">© {new Date().getFullYear()} · NC</span></p>
+            <p className="footer-colophon">Nicholas Carter · Software engineer. <span className="mono">© {new Date().getFullYear()} · NC</span></p>
           </footer>
         </div>
       </body>
