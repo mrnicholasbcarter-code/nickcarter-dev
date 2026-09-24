@@ -20,6 +20,7 @@ export type Project = {
   blurb: string;
   proof: string;
   href: string;
+  docsHref?: string;
   tags: string[];
   featured?: boolean;
 };
@@ -33,6 +34,7 @@ export const projects: Project[] = [
     proof:
       "The repository includes a credential-free routing demo with simulated failures. It uses fixtures, not live providers.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-core",
+    docsHref: "/docs/verdict",
     tags: ["Python", "policy gates", "receipts", "failover"],
     featured: true,
   },
