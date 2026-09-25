@@ -36,6 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <nav aria-label="Primary navigation">
               <Link href="/#work">Work</Link>
               <Link href="/#approach">Approach</Link>
+              <Link href="/docs">Docs</Link>
               <Link href="/resume">Resume</Link>
               <a href={site.links.github} target="_blank" rel="noreferrer">GitHub<span className="sr-only"> (opens in a new tab)</span></a>
             </nav>
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <div className="footer-links">
               <a href={site.links.github}>GitHub</a>
               <a href={site.links.linkedin}>LinkedIn</a>
+              <Link href="/docs">Docs</Link>
               <Link href="/resume">Resume</Link>
             </div>
             <p className="footer-colophon">Nicholas Carter · Software engineer. <span className="mono">© {new Date().getFullYear()} · NC</span></p>

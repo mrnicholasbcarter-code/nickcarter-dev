@@ -3,7 +3,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import test from "node:test";
 import { join } from "node:path";
 
-const roots = ["app", "content"];
+const roots = ["app", "components", "content"];
 function files(path) { return readdirSync(path).flatMap((name) => { const full = join(path,name); return statSync(full).isDirectory() ? files(full) : /\.(tsx?|css)$/.test(full) ? [full] : []; }); }
 const source = roots.flatMap(files).map((file) => readFileSync(file,"utf8")).join("\n");
 

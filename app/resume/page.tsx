@@ -38,7 +38,7 @@ export default function ResumePage() {
 
       <section className="section resume-section" aria-labelledby="project-experience">
         <p className="eyebrow">Selected project experience</p><h2 id="project-experience">Projects, in detail.</h2>
-        <div className="experience-list">{projects.map((project) => <article key={project.name}><div><p className="project-eyebrow">{project.eyebrow}</p><h3><a href={project.href}>{project.name}</a></h3></div><div><p>{project.blurb}</p><p className="muted">{project.proof}</p></div></article>)}</div>
+        <div className="experience-list">{projects.map((project) => <article key={project.name}><div><p className="project-eyebrow">{project.eyebrow}</p><h3><a href={project.href}>{project.name}</a></h3></div><div><p>{project.blurb}</p><p className="muted">{project.proof}</p>{project.docsHref ? <p className="muted no-print"><Link href={project.docsHref}>Architecture & evidence docs <span aria-hidden="true">→</span></Link></p> : null}</div></article>)}</div>
       </section>
 
       <section className="section resume-section" aria-labelledby="resume-skills">
