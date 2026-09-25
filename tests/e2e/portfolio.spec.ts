@@ -34,10 +34,10 @@ test("docs articles have one h1, labeled status, metadata, and working pager", a
   await expect(page).toHaveURL(/\/docs\/verdict\/model-selection$/);
 });
 
-test("OpenCodeReview is labeled roadmap on the workflow page", async ({ page }) => {
+test("Independent semantic review is labeled shipped on the workflow page", async ({ page }) => {
   await page.goto("/docs/verdict/autonomous-workflow");
-  const item = page.locator(".status-list li", { hasText: "OpenCodeReview" });
-  await expect(item.locator(".status-label")).toContainText("Roadmap");
+  const item = page.locator(".status-list li", { hasText: "Independent semantic review" });
+  await expect(item.locator(".status-label")).toContainText("Shipped");
 });
 
 test("sitemap lists every docs route", async ({ request }) => {

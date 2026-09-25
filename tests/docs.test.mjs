@@ -53,11 +53,11 @@ test("internal docs links resolve and external links point at public repositorie
   for (const [url] of docsSource.matchAll(/https?:\/\/[^\s"')]+/g)) assert.match(url, /^https:\/\/github\.com\/mrnicholasbcarter-code\//, url);
 });
 
-test("OpenCodeReview is presented only as roadmap work", () => {
-  const mentions = docsSource.split("\n").filter((line) => line.includes("OpenCodeReview"));
-  assert.ok(mentions.length > 0);
-  for (const line of mentions) assert.match(line, /status: "roadmap"/, line);
+test("Independent semantic review is shipped for orchestrated path", () => {
+  assert.match(docsSource, /status: "shipped".*?Independent semantic review/s);
+  assert.match(docsSource, /orchestrated.*?path/i);
 });
+
 
 test("docs avoid unsupported quantitative claims", () => {
   for (const pattern of [/\d[\d,]*\+? (models|providers|free tiers)/i, /\d+(\.\d+)?\s?%/, /100,000/, /sub-?(milli|five)/i, /production-ready/i, /\d+(\.\d+)?\s?ms\b/, /\bthousands of\b/i]) {
@@ -99,7 +99,7 @@ const hasCitation = (source, target) => assert.ok(source.includes(`blob("${targe
 
 test("source links and the displayed review bind to the reviewed public revision", () => {
   const source = readFileSync(join(projectDir, "source.ts"), "utf8");
-  assert.match(source, /export const revision = "72cb3642269684f122e590c390166cd6cebcf68e";/);
+  assert.match(source, /export const revision = "ff18aa5f2be0ea9b8ab6e32b56e713801b2d8b83";/);
   assert.ok(source.includes("`${repository}/blob/${revision}/${path}`"));
   assert.ok(source.includes("`${repository}/tree/${revision}/${path}`"));
   const project = readFileSync(join(projectDir, "index.ts"), "utf8");
