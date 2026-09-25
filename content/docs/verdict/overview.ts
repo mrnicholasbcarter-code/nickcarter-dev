@@ -22,14 +22,14 @@ export const overview: DocArticle = {
       title: "The approach",
       status: "shipped",
       blocks: [
-        { type: "paragraph", text: "Verdict treats model choice as an admission decision first and a preference second. Hard gates decide what is allowed. Advisory signals such as price or history only order the candidates that survive." },
+        { type: "paragraph", text: "Verdict treats model choice as an admission decision first and a preference second. The execution-path optimizer qualifies offers, then selects a strategy by expected complete cost. Legacy selectors can supply evidence, not override that authority." },
         {
           type: "list",
           items: [
             "Eligibility runs before ranking. A ranker can reorder survivors; it cannot restore a candidate the gates removed.",
             "Unknown is not healthy. Missing, stale, malformed, or contradictory availability evidence is a named drop, not a pass.",
             "Every dropped candidate carries a named reason, such as `policy`, `health`, `capability`, `stale`, or `quota`.",
-            "A paid model is never chosen while a cheaper qualified candidate remains.",
+            "Spend policy and authoritative session decisions constrain cost selection. Free preference is policy-specific, not a universal cheapest-model guarantee.",
             "When nothing qualifies, the request is blocked. There is no silent fallback to a frontier model.",
           ],
         },
@@ -47,7 +47,7 @@ export const overview: DocArticle = {
           label: "Credential-free quickstart (fixture output from the repository README)",
           code: "$ verdict quickstart --non-interactive --dry-run\nVerdict credential-free quickstart\n===================================\nTask: Add structured output to the invoice parser\nRequired capabilities: structured_output, tools\nSelected route: demo/frontier-tools\nExcluded candidates: 3\nReceipt: fixture:issue-35 (deterministic_fixture)\nStatus: PASS\n- demo/no-tools: missing capability: tools\n- demo/quota-empty: quota exhausted\n- demo/unverified: health unknown",
         },
-        { type: "paragraph", text: "It calls no provider, reads no credentials, and writes no state. The fixture uses the same decision rules as live routing, with deterministic inputs. It demonstrates the logic, not live-provider behavior." },
+        { type: "paragraph", text: "It calls no provider, reads no credentials, and writes no state. The fixture demonstrates capability and availability filtering with deterministic inputs. It is not a run of the live execution-path optimizer or proof of live-provider behavior." },
       ],
     },
     {
@@ -80,6 +80,9 @@ export const overview: DocArticle = {
     { label: "verdict-core README", href: blob("README.md") },
     { label: "Public evidence index", href: blob("docs/proof/EVIDENCE_INDEX.md") },
     { label: "v0.3.0 release boundary", href: blob("docs/proof/RELEASE_BOUNDARY_0.3.0.md") },
-    { label: "Credential-free demo source", href: blob("verdict/flagship_demo.py") },
+    { label: "Credential-free demo and its filtering", href: blob("verdict/flagship_demo.py#L1-L122") },
+    { label: "Strategy authority", href: blob("verdict/execution_path.py#L102-L107") },
+    { label: "Policy-specific free preference", href: blob("verdict/free_tier_admit.py#L1453-L1507") },
+    { label: "Session constraints and expected complete cost", href: blob("verdict/execution_path.py#L644-L681") },
   ],
 };

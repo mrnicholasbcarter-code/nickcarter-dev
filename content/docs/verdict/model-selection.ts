@@ -7,18 +7,19 @@ export const modelSelection: DocArticle = {
   navTitle: "Model selection",
   category: "Routing",
   description: "How Verdict decides which models may run a task: eligibility gates, health qualification, free and paid policy, explicit worker selection, and fail-closed outcomes.",
-  lede: "Selection happens in two phases with different authority. Hard gates decide what is allowed. Only then do advisory signals decide what is preferred.",
+  lede: "The execution-path optimizer qualifies offers and selects a strategy by expected complete cost. Policy and session constraints bound the choice; advisory feeds cannot restore excluded offers.",
   sections: [
     {
       id: "eligibility",
       title: "Eligibility comes first",
       status: "shipped",
       blocks: [
-        { type: "paragraph", text: "The eligibility gate is the single source of truth for filtering. It runs before any adaptive or cost ranking, and nothing downstream, whether a ranker, a planner, or a retrieval result, can reintroduce a candidate it excluded. The explain endpoint reads the same gate, so an operator sees exactly what the router used." },
-        { type: "paragraph", text: "Each candidate resolves to `allow`, `deny`, or `unknown`. Only `allow` enters ranking. Every other outcome carries one of these reasons:" },
+        { type: "paragraph", text: "The execution-path optimizer is the strategy authority. It qualifies offers against the candidate pool and hard exclusions before selection. An authoritative decision returns from IntelligenceService before the legacy gate/ranker branch. That branch is a feed or explicit compatibility path, not the literal sequence for every request." },
+        { type: "paragraph", text: "The legacy EligibilityGate uses `allow`, `deny`, and `unknown`; only `allow` passes. Its named drop reasons include the following. The optimizer also records offer-specific rejection reasons, so this is not a universal receipt schema:" },
+        { type: "paragraph", text: "Live preparation runs only for an execution-path request without a supplied pool receipt and with an available live snapshot. It requires Core metadata and passes the task profile's spend policy into admission. Existing pool receipts are not rebuilt; an absent snapshot leaves the request unchanged. Production defaults to requiring execution-path authority, but explicit context, configuration, or environment settings can permit compatibility." },
         {
           type: "table",
-          caption: "Named drop reasons",
+          caption: "Legacy eligibility drop reasons",
           columns: ["Reason", "Meaning"],
           rows: [
             ["`policy`", "Rules forbid this identity for this task."],
@@ -61,13 +62,14 @@ export const modelSelection: DocArticle = {
       title: "Free and paid policy",
       status: "shipped",
       blocks: [
-        { type: "paragraph", text: "Before cost is considered, a task is classified as **worthy** or **ordinary** using explicit rules, never an invented score. Worthy work, such as architecture, security, and final review, goes to frontier or high-capability models. Ordinary work goes free first, then to lesser paid models." },
+        { type: "paragraph", text: "Spend policy bounds admission. Worthiness is one input to live preparation, not a promise that every task follows a local/free/paid order. The optimizer compares complete strategies by expected cost with `free_first=False`." },
         {
           type: "list",
           items: [
-            "Candidates are ordered local, then free, then cheaper, then paid.",
+            "`free_only` excludes paid identities. `frontier_required` admits only frontier-class paid identities.",
             "Free status is observed, never inferred. A model is `free`, `paid`, or `UNKNOWN`, and a missing price never counts as free.",
-            "A paid model is never chosen while a cheaper qualified candidate remains. The selection record refuses to construct if it would be, so the violation cannot be serialized.",
+            "`free_preferred` prefers a surviving free identity in the admission receipt. That feed does not replace the optimizer as strategy authority.",
+            "An authoritative session decision can restrict selection to its still-qualified route and defer other qualified offers. This is not a universal cheapest-model guarantee.",
           ],
         },
       ],
@@ -101,6 +103,14 @@ export const modelSelection: DocArticle = {
     },
   ],
   sources: [
+    { label: "Optimizer strategy authority", href: blob("verdict/execution_path.py#L102-L107") },
+    { label: "Offer qualification", href: blob("verdict/execution_path.py#L556-L589") },
+    { label: "Session constraints and expected complete cost", href: blob("verdict/execution_path.py#L644-L681") },
+    { label: "Authoritative return before legacy selection", href: blob("verdict/intelligence.py#L377-L421") },
+    { label: "Conditional legacy gate", href: blob("verdict/intelligence.py#L484-L497") },
+    { label: "Conditional live preparation and spend policy", href: blob("verdict/intelligence.py#L699-L737") },
+    { label: "Authority compatibility settings", href: blob("verdict/serve_path.py#L54-L71") },
+    { label: "Spend-policy admission branches", href: blob("verdict/free_tier_admit.py#L1453-L1507") },
     { label: "Unknown is not healthy", href: blob("docs/guides/unknown-not-healthy.md") },
     { label: "Controller routing guide", href: blob("docs/guides/controller-routing.md") },
     { label: "Free-tier admit smoke test", href: blob("docs/guides/free-tier-admit-smoke.md") },

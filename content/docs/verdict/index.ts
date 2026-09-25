@@ -7,7 +7,7 @@ import { evidence } from "./evidence";
 import { modelSelection } from "./model-selection";
 import { overview } from "./overview";
 import { routingReceipts } from "./routing-receipts";
-import { repository } from "./source";
+import { repository, revision } from "./source";
 
 export const verdict: DocProject = {
   slug: "verdict",
@@ -15,7 +15,7 @@ export const verdict: DocProject = {
   tagline: "A model router that can say no.",
   description: "Architecture, routing policy, context handling, delivery workflow, and evidence for Verdict, a fail-closed control plane for AI coding tools.",
   repository,
-  reviewed: "2026-09-24",
+  reviewed: `2026-09-24 · ${revision}`,
   brief: [
     { question: "What is it?", answer: "A control plane that decides which AI models may run a coding task before any ranking happens, and records why every other candidate was dropped." },
     { question: "What problem does it solve?", answer: "Routers that score models can still pick a stale, unqualified, or policy-excluded model, and they leave no record of why. Verdict separates admission from preference. When nothing qualifies, it blocks instead of silently falling back to an expensive model." },

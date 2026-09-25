@@ -49,12 +49,13 @@ export const contextIntelligence: DocArticle = {
       title: "Budget enforcement",
       status: "shipped",
       blocks: [
-        { type: "paragraph", text: "The budget governor treats the model's entire context window as a scarce resource. It accounts for, allocates, and enforces the whole window, not just the space reserved for included context." },
+        { type: "paragraph", text: "Two components enforce different limits. `ContextPackCompiler` can omit any unit that exceeds its input budget, including required policy, with `input_budget_exhausted`. Recording required slot types in a plan does not make that overflow fail closed." },
         {
           type: "list",
           items: [
             "Every unit dropped to fit is recorded as an omission with a category and reason.",
-            "Required policy is never dropped. If it cannot fit, the run fails closed rather than sending a truncated pack.",
+            "The separate `ContextBudgetGovernor` screens out secret-pattern units first, even mandatory ones. Only surviving mandatory units fail closed for unknown size or overflow.",
+            "The governor accounts for supplied units plus configured output, reasoning, and tool-call reserves. This is not an end-to-end guarantee that the full prompt fits or required policy survives.",
             "Token counts use an approximation and are described as estimates.",
           ],
         },
@@ -74,8 +75,11 @@ export const contextIntelligence: DocArticle = {
     { label: "Context lift: paired live proof", href: blob("docs/benchmarks/context-lift.md") },
     { label: "ADR-022: Context provider conformance", href: blob("docs/adr/ADR-022-context-provider-conformance.md") },
     { label: "ADR-027: Context omissions", href: blob("docs/adr/ADR-027-observed-free-status-and-context-omissions.md") },
-    { label: "Context pack compiler (context_pack.py)", href: blob("verdict/context_pack.py") },
-    { label: "Budget governor (context_budget.py)", href: blob("verdict/context_budget.py") },
+    { label: "Required slot types in the plan", href: blob("verdict/context_pack.py#L165-L194") },
+    { label: "Compiler budget omissions", href: blob("verdict/context_pack.py#L981-L1001") },
+    { label: "Configured context reserves", href: blob("verdict/context_budget.py#L172-L202") },
+    { label: "Accounting for supplied units", href: blob("verdict/context_budget.py#L414-L449") },
+    { label: "Safety screening before mandatory handling", href: blob("verdict/context_budget.py#L459-L508") },
     { label: "Hydration (context_hydrate.py)", href: blob("verdict/context_hydrate.py") },
   ],
 };
