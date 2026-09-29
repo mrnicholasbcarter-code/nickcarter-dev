@@ -61,6 +61,7 @@ export default function HomePage() {
             <p className="project-blurb">{project.blurb}</p>
             <ul className="tags" aria-label={`${project.name} technologies`}>{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
             {project.docsHref ? <Link className="text-link project-docs-link" href={project.docsHref}>Architecture & evidence docs <span aria-hidden="true">→</span></Link> : null}
+            {project.caseStudyHref ? <a className="text-link project-docs-link" href={project.caseStudyHref} target="_blank" rel="noreferrer">Proof case study <span aria-hidden="true">→</span><span className="sr-only"> (opens in a new tab)</span></a> : null}
           </div>
           {index < 2 ? <figure className="project-figure"><SystemDrawing market={index === 1} /><figcaption><span>Fig. 0{index + 1}</span>{index === 0 ? "Constraints before confidence." : "A consistent view of a moving market."}</figcaption></figure> : <div className="small-diagram" aria-hidden="true">{index === 2 ? <><span>capital</span><i /><span className="diagram-gate">risk gate</span><i /><span>position</span></> : <><span>request</span><i /><span className="diagram-gate">middleware</span><i /><span>provider</span></>}</div>}
           <p className="project-proof"><strong>{index === 3 ? "Development status" : "Scope & status"}</strong>{project.proof}</p>

@@ -21,6 +21,7 @@ export type Project = {
   proof: string;
   href: string;
   docsHref?: string;
+  caseStudyHref?: string;
   tags: string[];
   featured?: boolean;
 };
@@ -28,14 +29,16 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: "Verdict",
-    eyebrow: "Choosing models within limits",
+    eyebrow: "Autonomous development control plane",
     blurb:
-      "An AI model can rank first and still be the wrong choice for a request. I built Verdict to check capability, privacy, reliability, and policy before ranking, with a receipt that explains each routing decision.",
+      "A goal goes in; a verified, independently reviewed, receipted change comes out. Verdict plans a DAG, admits models, runs parallel workers with same-node failover, verifies ownership and checks, runs an independent review, then writes a tamper-evident receipt.",
     proof:
-      "The repository includes a credential-free routing demo with simulated failures. It uses fixtures, not live providers.",
+      "Credential-free demo with injected worker faults and a reroute to another model, ending in a verified receipt. It uses fixtures, not live providers.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-core",
     docsHref: "/docs/verdict",
-    tags: ["Python", "policy gates", "receipts", "failover"],
+    caseStudyHref:
+      "https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/docs/portfolio/VERDICT_PROOF_CASE_STUDY.md",
+    tags: ["Python", "control plane", "receipts", "failover"],
     featured: true,
   },
   {
