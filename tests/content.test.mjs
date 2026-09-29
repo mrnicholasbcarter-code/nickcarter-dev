@@ -15,8 +15,9 @@ test("required profile and project links are exact", () => {
   for (const value of ["github.com/mrnicholasbcarter-code", "linkedin.com/in/nicholas-carter-dev", "prediction-market-sdk", "verdict-core", "verdict-risk"]) assert.match(source, new RegExp(value.replaceAll("/", "\\/")));
 });
 
-test("unverified domain email is not published and resume downloads exist", () => {
-  assert.equal(source.includes("mailto:nick@nickcarter.dev"), false);
+test("domain email is published and resume downloads exist", () => {
+  assert.match(readFileSync("content/site.ts", "utf8"), /email:\s*"nick@nickcarter\.dev"/);
+  assert.equal(source.includes("mr.nicholas.b.carter@gmail.com"), false);
   assert.match(source, /mailto:\$\{site\.email\}/);
   for (const slug of ["general", "data-ai", "full-stack"]) {
     assert.equal(existsSync(`public/resumes/nicholas-carter-${slug}-resume.pdf`), true);

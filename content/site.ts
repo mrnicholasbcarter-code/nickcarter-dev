@@ -4,7 +4,7 @@ export const site = {
   title: "Senior software engineer · Full stack, data & AI",
   location: "Sarasota, Florida",
   availability: "Open to senior/staff engineering roles and selected client work",
-  email: "mr.nicholas.b.carter@gmail.com",
+  email: "nick@nickcarter.dev",
   url: "https://nickcarter.dev",
   summary:
     "I’m Nicholas Carter, a software engineer with 20+ years across web, mobile, and backend development. At AgileThought, I delivered software for Deloitte and Bankers Surety. At Mad Mobile, I led retail application delivery. My work now extends into data systems and AI infrastructure.",

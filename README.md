@@ -34,7 +34,7 @@ The existing public Vercel URL is `https://nickcarter-dev.vercel.app`. Durable p
 
 ## Contact and resume boundaries
 
-- `nick@nickcarter.dev` is intentionally not published until inbound Cloudflare Email Routing passes independent tests.
+- Contact address nick@nickcarter.dev forwards through Cloudflare Email Routing (verified 2026-09-28).
 - The role-focused web resumes are print-friendly and use stable routes.
 - General, Data & AI, and Full-Stack resumes are available as stable web views and generated PDF downloads.
 - Employment history remains withheld until a verified source is available.
