@@ -33,7 +33,7 @@ export const projects: Project[] = [
     blurb:
       "A goal goes in; a verified, independently reviewed, receipted change comes out. Verdict plans a DAG, admits models, runs parallel workers with same-node failover, verifies ownership and checks, runs an independent review, then writes a tamper-evident receipt.",
     proof:
-      "Credential-free goal-to-receipt demo with injected faults and same-node reroute. Failover here means worker/same-node recovery, not root-controller HA. Uses fixtures, not live providers.",
+      "Credential-free demo with injected worker faults and a reroute to another model, ending in a verified receipt. It uses fixtures, not live providers.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-core",
     docsHref: "/docs/verdict",
     caseStudyHref:
