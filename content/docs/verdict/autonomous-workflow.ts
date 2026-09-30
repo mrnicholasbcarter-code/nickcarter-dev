@@ -45,7 +45,7 @@ export const autonomousWorkflow: DocArticle = {
             { status: "shipped", title: "Proof gates", text: "Proof maps every acceptance criterion to artifacts and binds a clean head commit. Checked boxes, old summaries, and workflow definitions are not proof." },
             { status: "shipped", title: "CI classification and bounded recovery", text: "Results are classified as green, pending, code failure, infrastructure failure, cancelled, missing, or empty. Code failures return to the same worktree, infrastructure failures retry without code changes, and exhausted attempts stop as blocked. A red or unclassifiable result is never reported as success." },
             { status: "experimental", title: "Routed worker execution", text: "Live runs depend on external model availability, the gateway, and the Prime agent runtime. Linear, GitHub, and model health remain runtime prerequisites." },
-            { status: "shipped", title: "Independent semantic review (orchestrated path only)", text: "Shipped on main; ships in v0.3.0. The orchestrated run path uses an independent reviewer (open-code-review) on a route excluded from the implementers and blocks on FAIL. Review runs only in the orchestrated path, not in ad-hoc single-shot execution." },
+            { status: "shipped", title: "Independent semantic review (orchestrated path only)", text: "Released in 0.3.0. The orchestrated run path uses an independent reviewer (open-code-review) on a route excluded from the implementers and blocks on FAIL. Review runs only in the orchestrated path, not in ad-hoc single-shot execution." },
           ],
         },
       ],
