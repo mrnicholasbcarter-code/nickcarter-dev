@@ -76,7 +76,7 @@ test("profile and project links target the verified URLs", async ({ page }) => {
 test("career experience is visible on the homepage and every resume", async ({ page }) => {
   for (const path of ["/", "/resume", "/resume/general", "/resume/full-stack", "/resume/data-ai"]) {
     await page.goto(path);
-    await expect(page.locator("main").getByText(/20\+ years/).first()).toBeVisible();
+    await expect(page.locator("main").getByText(/20\+? years/).first()).toBeVisible();
     for (const company of ["AgileThought", "Mad Mobile", "Blue Cross Blue Shield of Michigan"]) {
       await expect(page.getByRole("heading", { name: new RegExp(company) }).first()).toBeVisible();
     }
@@ -88,10 +88,48 @@ test("career experience is visible on the homepage and every resume", async ({ p
 });
 
 
-test("homepage leads with engineering identity, contact, and attributed career work", async ({ page }) => {
+test("homepage leads with the client offer, contact, and attributed career work", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Senior engineer.");
-  await expect(page.getByRole("link", { name: "Discuss a role" })).toHaveAttribute("href", "mailto:nick@nickcarter.dev");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("AI features and full-stack apps, built to hold up in production.");
+  const hero = page.locator(".hero");
+  await expect(hero).toContainText("Taking new contract work · Remote, US Eastern · Hourly or fixed-scope");
+  await expect(hero).toContainText("I’m Nick Carter, a senior engineer with 20 years of delivery for Deloitte, VF Corp, and Blue Cross Blue Shield.");
+  await expect(hero).toContainText("Also open to senior full-time roles.");
+  await expect(hero.getByRole("link", { name: /Hire me on Upwork/ })).toHaveAttribute("href", "https://www.upwork.com/freelancers/~01aa0036f6c4dd8a21");
+  await expect(hero.getByRole("link", { name: "Email me" })).toHaveAttribute("href", "mailto:nick@nickcarter.dev");
+  await expect(hero.getByRole("link", { name: "Review resume" })).toHaveAttribute("href", "/resume");
+  const services = page.locator("#services");
+  await expect(services.getByRole("heading", { level: 3 })).toHaveText(["LLM integration and model routing", "AI-built app review and hardening", "LLM cost and reliability audit", "Full-stack product work"]);
+  await expect(page.locator("#contact")).toContainText("Have a project in mind? Tell me what you’re building, your timeline, and your budget range. I reply within one business day.");
+  await expect(page.locator("#contact").getByRole("link", { name: "Email me" })).toHaveAttribute("href", "mailto:nick@nickcarter.dev");
   const career = page.locator("#experience");
+  await expect(career).toContainText("Selected client work");
   for (const text of ["Deloitte", "Bankers Surety", "VF Corp", "Member Portal R2"]) await expect(career).toContainText(text);
+});
+
+test("services nav item reaches the Work with me section", async ({ page }) => {
+  await page.goto("/resume");
+  await page.getByRole("navigation", { name: "Primary navigation" }).getByRole("link", { name: "Services" }).click();
+  await expect(page).toHaveURL(/\/#services$/);
+  await expect(page.locator("#services")).toBeInViewport();
+});
+
+test("Verdict evidence link opens the docs evidence page", async ({ page }) => {
+  await page.goto("/");
+  await page.locator('#work a[href="/docs/verdict/evidence"]').click();
+  await expect(page).toHaveURL(/\/docs\/verdict\/evidence$/);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Benchmarks and evidence");
+});
+
+test("homepage metadata and structured data describe the contract offer", async ({ page }) => {
+  await page.goto("/");
+  const description = await page.locator('meta[name="description"]').getAttribute("content");
+  expect(description).toBe("Nick Carter, senior AI and full-stack engineer. LLM features with guardrails, React, Node, and Python builds. 20 years. Taking contract work.");
+  expect(description!.length).toBeLessThanOrEqual(155);
+  await expect(page.locator('meta[property="og:description"]')).toHaveAttribute("content", description!);
+  await expect(page).toHaveTitle("Nicholas Carter · Senior AI & Full-Stack Engineer");
+  const data = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent() ?? "{}");
+  expect(data.mainEntity.jobTitle).toBe("Senior AI & Full-Stack Engineer");
+  expect(data.mainEntity.knowsAbout).toContain("LLM integration");
+  expect(data.mainEntity.sameAs).toContain("https://www.upwork.com/freelancers/~01aa0036f6c4dd8a21");
 });
