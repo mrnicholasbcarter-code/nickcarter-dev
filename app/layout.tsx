@@ -1,22 +1,23 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name} · Senior Software Engineer · Full Stack, Data & AI`, template: `%s · ${site.name}` },
-  description: site.summary,
+  title: { default: `${site.name} · ${site.jobTitle}`, template: `%s · ${site.name}` },
+  description: site.description,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: "/",
     siteName: site.name,
-    title: `${site.name} · Senior Software Engineer · Full Stack, Data & AI`,
-    description: site.summary,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} · Senior Software Engineer · Full Stack, Data & AI` }],
+    title: `${site.name} · ${site.jobTitle}`,
+    description: site.description,
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} · ${site.jobTitle} · Taking contract work` }],
   },
-  twitter: { card: "summary_large_image", images: ["/opengraph-image"], title: `${site.name} · Senior Software Engineer · Full Stack, Data & AI`, description: site.summary },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image"], title: `${site.name} · ${site.jobTitle}`, description: site.description },
   robots: { index: true, follow: true },
 };
 
@@ -31,9 +32,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <header className="site-header">
             <Link href="/" className="brand" aria-label={`${site.name}, home`}>
               <span className="brand-mark" aria-hidden="true">{site.shortName}</span>
-              <span><strong>{site.name}</strong><small>Full stack · Data &amp; AI · 20+ years</small></span>
+              <span><strong>{site.name}</strong><small>AI &amp; full stack · 20 years</small></span>
             </Link>
             <nav aria-label="Primary navigation">
+              <Link href="/#services">Services</Link>
               <Link href="/#work">Work</Link>
               <Link href="/#approach">Approach</Link>
               <Link href="/docs">Docs</Link>
@@ -53,6 +55,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <p className="footer-colophon">Nicholas Carter · Software engineer. <span className="mono">© {new Date().getFullYear()} · NC</span></p>
           </footer>
         </div>
+        <Analytics />
       </body>
     </html>
   );

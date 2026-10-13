@@ -1,18 +1,63 @@
 export const site = {
   name: "Nicholas Carter",
   shortName: "NC",
-  title: "Senior software engineer · Full stack, data & AI",
+  title: "Senior AI & full-stack engineer",
+  jobTitle: "Senior AI & Full-Stack Engineer",
   location: "Sarasota, Florida",
-  availability: "Open to senior/staff engineering roles and selected client work",
+  headline: "AI features and full-stack apps,",
+  headlineAccent: "built to hold up in production.",
+  summary:
+    "I’m Nick Carter, a senior engineer with 20 years of delivery for Deloitte, VF Corp, and Blue Cross Blue Shield. I build LLM integrations with guardrails, and the React, Node, and Python systems around them. Taking contract work now.",
+  availability: "Taking new contract work · Remote, US Eastern · Hourly or fixed-scope",
+  fullTimeNote: "Also open to senior full-time roles.",
+  description:
+    "Nick Carter, senior AI and full-stack engineer. LLM features with guardrails, React, Node, and Python builds. 20 years. Taking contract work.",
+  contactPrompt:
+    "Have a project in mind? Tell me what you’re building, your timeline, and your budget range. I reply within one business day.",
+  // The /resume pages keep the full-time framing.
+  resumeSummary:
+    "I’m Nicholas Carter, a software engineer with 20+ years across web, mobile, and backend development. At AgileThought, I delivered software for Deloitte and Bankers Surety. At Mad Mobile, I led retail application delivery. My work now extends into data systems and AI infrastructure.",
+  resumeAvailability: "Open to senior/staff engineering roles and selected client work",
   email: "nick@nickcarter.dev",
   url: "https://nickcarter.dev",
-  summary:
-    "I’m Nicholas Carter, a software engineer with 20+ years across web, mobile, and backend development. At AgileThought, I delivered software for Deloitte and Bankers Surety. At Mad Mobile, I led retail application delivery. My work now extends into data systems and AI infrastructure.",
   links: {
     github: "https://github.com/mrnicholasbcarter-code",
     linkedin: "https://www.linkedin.com/in/nicholas-carter-dev",
+    upwork: "https://www.upwork.com/freelancers/~01aa0036f6c4dd8a21",
   },
+  knowsAbout: [
+    "LLM integration",
+    "Model routing",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Redis",
+    "Web accessibility (WCAG)",
+  ],
 } as const;
+
+export const services = [
+  {
+    title: "LLM integration and model routing",
+    copy: "I wire in OpenAI, Anthropic, or any OpenAI-compatible API with fallbacks, retries, spend caps, and structured outputs. Every call logs which model answered and why.",
+  },
+  {
+    title: "AI-built app review and hardening",
+    copy: "For codebases shipped fast with Cursor, Lovable, Bolt, or Claude Code. I read the code, fix what’s broken, add tests and CI, check for exposed secrets and missing access rules, and hand you a written report with fixes in priority order.",
+  },
+  {
+    title: "LLM cost and reliability audit",
+    copy: "A fixed-scope review of your spend, model choices, failure handling, and evals. You get a short plan you can act on the same week.",
+  },
+  {
+    title: "Full-stack product work",
+    copy: "I build React, Next.js, and TypeScript front ends on Python/FastAPI or Node back ends, with PostgreSQL and Redis for the data.",
+  },
+] as const;
 
 export type Project = {
   name: string;
@@ -21,7 +66,7 @@ export type Project = {
   proof: string;
   href: string;
   docsHref?: string;
-  caseStudyHref?: string;
+  evidenceHref?: string;
   tags: string[];
   featured?: boolean;
 };
@@ -36,8 +81,7 @@ export const projects: Project[] = [
       "Credential-free demo with injected worker faults and a reroute to another model, ending in a verified receipt. It uses fixtures, not live providers.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-core",
     docsHref: "/docs/verdict",
-    caseStudyHref:
-      "https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/docs/portfolio/VERDICT_PROOF_CASE_STUDY.md",
+    evidenceHref: "/docs/verdict/evidence",
     tags: ["Python", "control plane", "receipts", "failover"],
     featured: true,
   },
@@ -95,7 +139,7 @@ export const skillGroups = [
 export const engineeringPrinciples = [
   {
     title: "Work through the requirements",
-    copy: "Consulting taught me to turn business requirements into implementation plans with clients, product, UX, and QA. The work starts with understanding the workflow—not picking a framework.",
+    copy: "Consulting taught me to turn business requirements into implementation plans with clients, product, UX, and QA. The work starts with understanding the workflow.",
   },
   {
     title: "Stay involved through release",
