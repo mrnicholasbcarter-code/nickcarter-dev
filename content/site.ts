@@ -7,7 +7,7 @@ export const site = {
   email: "nick@nickcarter.dev",
   url: "https://nickcarter.dev",
   summary:
-    "I’m Nicholas Carter, a software engineer with 20+ years across web, mobile, and backend development. At AgileThought, I delivered software for Deloitte and Bankers Surety. At Mad Mobile, I led retail application delivery. My work now extends into data systems and AI infrastructure.",
+    "I’m Nicholas Carter, a software engineer with 20+ years across web, mobile, and backend development. At AgileThought, I led a Deloitte Symphony team and built Bankers Surety’s platform end to end. At Mad Mobile, I owned VF Corp’s MPOS and Sysco’s inventory apps. My work now extends into data systems and AI infrastructure.",
   links: {
     github: "https://github.com/mrnicholasbcarter-code",
     linkedin: "https://www.linkedin.com/in/nicholas-carter-dev",
@@ -84,11 +84,11 @@ export const skillGroups = [
   },
   {
     name: "Full-stack & mobile",
-    skills: ["JavaScript & TypeScript", "React & React Native", "Angular & AngularJS", "HTML & CSS", "Responsive UI & WCAG", "CMS & e-commerce"],
+    skills: ["JavaScript & TypeScript", "React & React Native", "Angular (1 through 17)", "HTML & CSS", "Responsive UI & WCAG", "CMS & e-commerce"],
   },
   {
     name: "Platform & leadership",
-    skills: ["Docker, Linux & GCP", "CI/CD & security gates", "Solution architecture", "Client & stakeholder collaboration", "Code review & mentoring", "Agile delivery & release support"],
+    skills: ["AWS, Azure & GCP", "CI/CD, Jenkins & SonarQube gates", "Solution architecture", "Client & stakeholder collaboration", "Code review & mentoring", "Agile delivery & release support"],
   },
 ] as const;
 
@@ -99,7 +99,7 @@ export const engineeringPrinciples = [
   },
   {
     title: "Stay involved through release",
-    copy: "At Bankers Surety, my work spanned C# services, Angular interfaces, integrations, and build pipelines. I’m comfortable following a feature across those boundaries and into release support.",
+    copy: "At Bankers Surety, I built the platform end to end, from C# services and Angular interfaces to integrations and build pipelines, and led the client relationship. I’m comfortable following a feature across those boundaries and into release support.",
   },
   {
     title: "Help the team carry it forward",
@@ -122,23 +122,24 @@ export const careerExperience = [
     role: "Independent Engineer — AI Infrastructure & Data Systems",
     period: "2023 – Present",
     location: "Florida",
-    summary: "Build AI developer infrastructure and full-stack data systems, from routing policy and API integrations to real-time pipelines and operator interfaces.",
+    summary: "Build AI developer infrastructure and data systems, plus Angular 17 front ends on client contracts (2024–2025).",
     highlights: [
       "Designed and shipped Verdict, a Python-first LLM control plane with TypeScript integrations, explicit eligibility checks, decision receipts, replay, and failover workflows.",
       "Built CLI and API workflows for catalog qualification, routing, simulation, benchmarking, health probing, and compatibility checks.",
       "Developed a paper-first trading and ML platform with real-time market data, PostgreSQL/Redis persistence, LightGBM training, FastAPI inference, and React and terminal dashboards.",
       "Maintain automated tests, typing, linting, security scans, build and install checks, and cross-language contract checks across repositories.",
+      "Client contract work (2024–2025): built Angular 17 front ends using signals, standalone components, typed reactive forms, and Angular Material, with Jest and Cypress tests.",
     ],
   },
   {
     company: "AgileThought",
-    role: "Senior Consultant",
+    role: "Senior Consultant · Team Lead",
     period: "Jan 2018 – Nov 2023",
     location: "Tampa / St. Petersburg, FL",
-    summary: "Shipped React features for Deloitte’s Symphony platform and owned major portions of Bankers Surety’s next-generation platform—from C# services and Angular UI to integrations, build pipelines, and release support.",
+    summary: "Led one of 17 Deloitte Symphony teams and built Bankers Surety’s platform end to end, leading the client relationship as well as development.",
     highlights: [
-      "Shipped React-based features on Deloitte’s Symphony platform in collaboration with product, UX, QA, and engineering teams.",
-      "Owned major portions of Bankers Surety’s next-generation platform across C# services and middleware, Angular UI, API integrations, and build pipelines.",
+      "Team lead on Deloitte’s Symphony platform and owner of its React component library across three major versions.",
+      "Built Bankers Surety’s platform end to end: C# services, Entity Framework, Angular UI, integrations, Azure, and pipelines.",
       "Supported architecture and implementation planning, code review, defect resolution, production troubleshooting, and release delivery.",
       "Applied responsive design, accessibility, and cross-browser practices to long-lived enterprise applications.",
     ],
@@ -148,19 +149,19 @@ export const careerExperience = [
     role: "Senior Software Developer, Team Lead",
     period: "Jul 2016 – Jan 2018",
     location: "Tampa, FL",
-    summary: "Led web and mobile delivery for VF Corp’s Concierge MPOS across brands including Vans, Timberland, and The North Face. Also contributed to Sysco inventory and ordering applications, while mentoring developers and coordinating delivery.",
+    summary: "Owned VF Corp’s Concierge MPOS, deployed in Stabio, Switzerland, and Sysco’s inventory and chatbot ordering apps, leading teams of up to 10.",
     highlights: [
-      "Delivered VF Corp Concierge MPOS across US and European brands including Vans, Timberland, and The North Face.",
-      "Contributed to Sysco inventory-management and conversational ordering applications, connecting user experiences to backend APIs and business workflows.",
+      "Owned VF Corp Concierge MPOS for brands including Vans, Timberland, and The North Face.",
+      "Owned Sysco’s inventory and chatbot ordering apps and other core-services clients on AWS with Terraform.",
       "Mentored developers, reviewed code, and coordinated delivery across client teams; recognized as Developer of the Month three consecutive months.",
     ],
   },
   {
     company: "Blue Cross Blue Shield of Michigan",
-    role: "Senior Web Developer / Senior Web Designer",
+    role: "UI Lead · Senior Web Developer / Senior Web Designer",
     period: "Oct 2013 – Jul 2016",
     location: "Detroit, MI",
-    summary: "Led front-end development for Member Portal R2, bringing responsive interfaces, reusable patterns, and WCAG accessibility practices to member-facing healthcare software.",
+    summary: "UI lead for Member Portal R2: responsive, WCAG-accessible healthcare UI on Java / Spring Boot services.",
     highlights: [
       "Built responsive interfaces and reusable front-end patterns with Backbone, jQuery, Adobe CQ/CMS, HTML5, and CSS3.",
       "Partnered with UX, product, content, and engineering teams on WCAG accessibility, cross-browser support, and maintainability.",
@@ -174,7 +175,7 @@ export const careerExperience = [
     location: "Detroit, MI (Contract)",
     summary: "Developed and supported GM infotainment software in a cross-platform environment.",
     highlights: [
-      "Worked with HTML5, AngularJS, Node.js, WebSockets, and SOAP service integrations.",
+      "Worked with HTML5, Angular, Node.js, WebSockets, and SOAP service integrations.",
       "Supported QA and release tooling, defect triage, and cross-platform troubleshooting.",
     ],
   },
