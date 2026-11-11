@@ -14,7 +14,7 @@
     "resumes:pdf": "node scripts/generate-resume-pdfs.mjs"
   },
   "dependencies": {
-    "next": "^16.3.6",
+    "next": "^16.4.6",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },
@@ -28,7 +28,7 @@
     "autoprefixer": "^10.4.21",
     "axe-core": "^4.13.0",
     "eslint": "^9.39.5",
-    "eslint-config-next": "^16.3.6",
+    "eslint-config-next": "^16.4.6",
     "playwright": "^1.63.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.17",
