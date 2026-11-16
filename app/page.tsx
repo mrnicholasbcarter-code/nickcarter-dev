@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { careerExperience, careerSummary, engineeringPrinciples, projects, site, skillGroups } from "@/content/site";
+import { careerExperience, careerSummary, engineeringPrinciples, projects, services, site, skillGroups } from "@/content/site";
 
 const Arrow = () => <span aria-hidden="true">↗</span>;
+const NewTab = () => <span className="sr-only"> (opens in a new tab)</span>;
 
 function SystemDrawing({ market = false }: { market?: boolean }) {
   return <svg className="system-drawing" viewBox="0 0 480 340" fill="none" aria-hidden="true">
@@ -29,31 +30,38 @@ function SystemDrawing({ market = false }: { market?: boolean }) {
 export default function HomePage() {
   const structuredData = {
     "@context": "https://schema.org", "@type": "ProfilePage",
-    mainEntity: { "@type": "Person", name: site.name, url: site.url, email: site.email,
+    mainEntity: { "@type": "Person", name: site.name, alternateName: "Nick Carter", jobTitle: site.jobTitle, url: site.url, email: site.email,
       address: { "@type": "PostalAddress", addressLocality: "Sarasota", addressRegion: "FL", addressCountry: "US" },
-      sameAs: [site.links.github, site.links.linkedin] },
+      knowsAbout: site.knowsAbout,
+      sameAs: [site.links.github, site.links.linkedin, site.links.upwork] },
   };
   return <>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replaceAll("<", "\\u003c") }} />
     <section className="hero" aria-labelledby="hero-title">
-      <div className="hero-kicker"><p className="eyebrow">Senior software engineer · 20+ years</p><span className="mono">Sarasota, FL / Available for work</span></div>
+      <div className="hero-kicker"><p className="eyebrow">{site.availability}</p><span className="mono">Sarasota, FL / {site.title}</span></div>
       <div className="hero-copy">
-        <h1 id="hero-title">Senior engineer.<br /><em>Across the stack.</em></h1>
-        <div className="hero-intro"><p className="lede">{site.summary}</p><div className="actions"><a className="text-link" href={`mailto:${site.email}`}>Discuss a role <Arrow /></a><Link className="text-link quiet-link" href="/resume">Review resume <Arrow /></Link></div></div>
+        <h1 id="hero-title">{site.headline}{" "}<br /><em>{site.headlineAccent}</em></h1>
+        <div className="hero-intro"><p className="lede">{site.summary}</p><div className="actions"><a className="text-link" href={site.links.upwork} target="_blank" rel="noreferrer">Hire me on Upwork <Arrow /><NewTab /></a><a className="text-link quiet-link" href={`mailto:${site.email}`}>Email me <Arrow /></a><Link className="text-link quiet-link" href="/resume">Review resume <Arrow /></Link></div></div>
       </div>
       <aside className="hero-aside" aria-label="Engineering focus"><div className="figure-label"><span>Current work / AI</span><span>Systems engineering</span></div><SystemDrawing /><p>Current focus:<br />AI systems that explain their decisions.</p><span className="aside-note mono">Model routing / policy checks / decision receipts</span></aside>
-      <div className="hero-bottom"><span className="status"><span className="status-dot" aria-hidden="true" />{site.availability}</span><span className="mono">Experience & recent work ↓</span></div>
+      <div className="hero-bottom"><span className="status"><span className="status-dot" aria-hidden="true" />{site.fullTimeNote}</span><span className="mono">Services & client work ↓</span></div>
+    </section>
+
+    <section className="section services" id="services" aria-labelledby="services-title">
+      <div className="section-heading"><div><p className="eyebrow">01 / Work with me</p><h2 id="services-title">Four ways<br /><em>I can help.</em></h2></div><p>Hourly or fixed-scope, remote on US Eastern time. If your project sits between two of these, tell me about it anyway.</p></div>
+      <ol className="service-list">{services.map((service, index) => <li key={service.title}><span className="mono">0{index + 1}</span><div><h3>{service.title}</h3><p>{service.copy}</p></div></li>)}</ol>
+      <div className="actions"><a className="text-link" href={site.links.upwork} target="_blank" rel="noreferrer">Hire me on Upwork <Arrow /><NewTab /></a><a className="text-link quiet-link" href={`mailto:${site.email}`}>Email me <Arrow /></a></div>
     </section>
 
     <section className="section resume-section" id="experience" aria-labelledby="experience-title">
-      <div className="section-heading"><div><p className="eyebrow">01 / A career in software</p><h2 id="experience-title">The work behind<br /><em>the experience.</em></h2></div><p>Hands-on engineering and team leadership across consulting, retail, and healthcare.</p></div>
+      <div className="section-heading"><div><p className="eyebrow">02 / Selected client work</p><h2 id="experience-title">The work behind<br /><em>the experience.</em></h2></div><p>Hands-on engineering and team leadership across consulting, retail, and healthcare.</p></div>
       <p className="body-large">{careerSummary}</p>
       <div className="experience-list">{careerExperience.slice(1, 4).map((role) => <article key={role.company}><div><p className="project-eyebrow">{role.period}</p><h3>{role.company}</h3><p>{role.role}</p></div><div><p>{role.summary}</p></div></article>)}</div>
       <div className="actions"><Link className="text-link" href="/resume">View my full career & resume <Arrow /></Link></div>
     </section>
 
     <section className="section work-section" id="work" aria-labelledby="work-title">
-      <div className="section-heading"><div><p className="eyebrow">02 / Recent independent work</p><h2 id="work-title">What I’m <em>building now.</em></h2></div><p>Independent projects in model routing, market data, and request controls. Each repository shows the implementation and its current scope.</p></div>
+      <div className="section-heading"><div><p className="eyebrow">03 / Recent independent work</p><h2 id="work-title">What I’m <em>building now.</em></h2></div><p>Independent projects in model routing, market data, and request controls. Each repository shows the implementation and its current scope.</p></div>
       <div className="project-grid">
         {projects.map((project, index) => <article className={`project-story project-${index + 1}`} key={project.name}>
           <div className="project-content"><div className="project-meta"><span className="mono">0{index + 1}</span><p className="project-eyebrow">{project.eyebrow}</p></div>
@@ -61,7 +69,7 @@ export default function HomePage() {
             <p className="project-blurb">{project.blurb}</p>
             <ul className="tags" aria-label={`${project.name} technologies`}>{project.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
             {project.docsHref ? <Link className="text-link project-docs-link" href={project.docsHref}>Architecture & evidence docs <span aria-hidden="true">→</span></Link> : null}
-            {project.caseStudyHref ? <a className="text-link project-docs-link" href={project.caseStudyHref} target="_blank" rel="noreferrer">Proof case study <span aria-hidden="true">→</span><span className="sr-only"> (opens in a new tab)</span></a> : null}
+            {project.evidenceHref ? <Link className="text-link project-docs-link" href={project.evidenceHref}>Proof and evidence <span aria-hidden="true">→</span></Link> : null}
           </div>
           {index < 2 ? <figure className="project-figure"><SystemDrawing market={index === 1} /><figcaption><span>Fig. 0{index + 1}</span>{index === 0 ? "Constraints before confidence." : "A consistent view of a moving market."}</figcaption></figure> : <div className="small-diagram" aria-hidden="true">{index === 2 ? <><span>capital</span><i /><span className="diagram-gate">risk gate</span><i /><span>position</span></> : <><span>request</span><i /><span className="diagram-gate">middleware</span><i /><span>provider</span></>}</div>}
           <p className="project-proof"><strong>{index === 3 ? "Development status" : "Scope & status"}</strong>{project.proof}</p>
@@ -70,12 +78,12 @@ export default function HomePage() {
     </section>
 
     <section className="section approach" id="approach" aria-labelledby="approach-title">
-      <div className="approach-intro"><p className="eyebrow">03 / How I work</p><h2 id="approach-title">From requirements<br /><em>through release.</em></h2><p>The job is more than implementation. It includes the client conversation, the design review, the difficult integration, and helping the next developer understand the code.</p></div>
+      <div className="approach-intro"><p className="eyebrow">04 / How I work</p><h2 id="approach-title">From requirements<br /><em>through release.</em></h2><p>The job is more than implementation. It includes the client conversation, the design review, the difficult integration, and helping the next developer understand the code.</p></div>
       <ol className="principle-list">{engineeringPrinciples.map((item, index) => <li key={item.title}><span className="mono">0{index + 1}</span><div><h3>{item.title}</h3><p>{item.copy}</p></div></li>)}</ol>
     </section>
 
-    <section className="section capabilities" aria-labelledby="skills-title"><div className="section-heading"><div><p className="eyebrow">04 / Working toolkit</p><h2 id="skills-title">Across the stack.</h2></div><p>React and Angular interfaces. Node.js and C# services. Python data and AI workflows. Architecture, accessibility, and delivery across them.</p></div><div className="skill-grid">{skillGroups.map(group => <article key={group.name}><h3>{group.name}</h3><ul>{group.skills.map(skill => <li key={skill}>{skill}</li>)}</ul></article>)}</div></section>
+    <section className="section capabilities" aria-labelledby="skills-title"><div className="section-heading"><div><p className="eyebrow">05 / Working toolkit</p><h2 id="skills-title">Across the stack.</h2></div><p>React and Angular interfaces. Node.js and C# services. Python data and AI workflows. Architecture, accessibility, and delivery across them.</p></div><div className="skill-grid">{skillGroups.map(group => <article key={group.name}><h3>{group.name}</h3><ul>{group.skills.map(skill => <li key={skill}>{skill}</li>)}</ul></article>)}</div></section>
 
-    <section className="contact-panel" aria-labelledby="contact-title"><div><p className="eyebrow">Hiring or planning a project?</p><h2 id="contact-title">Let’s talk about<br /><em>the work.</em></h2></div><div className="contact-details"><p>I’m open to senior/staff engineering roles and selected consulting work. Tell me about your team, the product, and where you need someone to take ownership.</p><a className="contact-link" href={`mailto:${site.email}`}>Email Nicholas <Arrow /></a><div className="contact-social"><a href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /><span className="sr-only"> (opens in a new tab)</span></a><a href={site.links.github} target="_blank" rel="noreferrer">GitHub <Arrow /><span className="sr-only"> (opens in a new tab)</span></a></div></div></section>
+    <section className="contact-panel" id="contact" aria-labelledby="contact-title"><div><p className="eyebrow">Start a project</p><h2 id="contact-title">Let’s talk about<br /><em>the work.</em></h2></div><div className="contact-details"><p>{site.contactPrompt}</p><a className="contact-link" href={site.links.upwork} target="_blank" rel="noreferrer">Hire me on Upwork <Arrow /><NewTab /></a><a className="contact-link" href={`mailto:${site.email}`}>Email me <Arrow /></a><div className="contact-social"><a href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn <Arrow /><NewTab /></a><a href={site.links.github} target="_blank" rel="noreferrer">GitHub <Arrow /><NewTab /></a><Link href="/resume">Resume <Arrow /></Link></div></div></section>
   </>;
 }

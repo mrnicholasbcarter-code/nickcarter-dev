@@ -16,8 +16,8 @@ export default function ResumePage() {
         <p className="eyebrow">Professional experience</p>
         <h1>{site.name}</h1>
         <p className="resume-title">{site.title}</p>
-        <p className="lede">{site.summary}</p>
-        <div className="resume-meta"><span>{site.location}</span><span>{site.availability}</span></div>
+        <p className="lede">{site.resumeSummary}</p>
+        <div className="resume-meta"><span>{site.location}</span><span>{site.resumeAvailability}</span></div>
         <div className="actions no-print"><a className="button button-primary" href={`mailto:${site.email}`}>Email</a><a className="button button-secondary" href={site.links.linkedin} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a><a className="button button-secondary" href={site.links.github} target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span></a></div>
       </section>
 
@@ -38,7 +38,7 @@ export default function ResumePage() {
 
       <section className="section resume-section" aria-labelledby="project-experience">
         <p className="eyebrow">Selected project experience</p><h2 id="project-experience">Projects, in detail.</h2>
-        <div className="experience-list">{projects.map((project) => <article key={project.name}><div><p className="project-eyebrow">{project.eyebrow}</p><h3><a href={project.href}>{project.name}</a></h3></div><div><p>{project.blurb}</p><p className="muted">{project.proof}</p>{project.docsHref ? <p className="muted no-print"><Link href={project.docsHref}>Architecture & evidence docs <span aria-hidden="true">→</span></Link></p> : null}{project.caseStudyHref ? <p className="muted no-print"><a href={project.caseStudyHref} target="_blank" rel="noreferrer">Proof case study <span aria-hidden="true">→</span><span className="sr-only"> (opens in a new tab)</span></a></p> : null}</div></article>)}</div>
+        <div className="experience-list">{projects.map((project) => <article key={project.name}><div><p className="project-eyebrow">{project.eyebrow}</p><h3><a href={project.href}>{project.name}</a></h3></div><div><p>{project.blurb}</p><p className="muted">{project.proof}</p>{project.docsHref ? <p className="muted no-print"><Link href={project.docsHref}>Architecture & evidence docs <span aria-hidden="true">→</span></Link></p> : null}{project.evidenceHref ? <p className="muted no-print"><Link href={project.evidenceHref}>Proof and evidence <span aria-hidden="true">→</span></Link></p> : null}</div></article>)}</div>
       </section>
 
       <section className="section resume-section" aria-labelledby="resume-skills">
