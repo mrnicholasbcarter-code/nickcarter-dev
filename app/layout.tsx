@@ -30,7 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a className="skip-link" href="#main-content">Skip to content</a>
         <div className="site-shell">
           <header className="site-header">
-            <Link href="/" className="brand" aria-label={`${site.name} AI & full stack · 20 years`}>
+            <Link href="/" className="brand">
               <span className="brand-mark" aria-hidden="true">{site.shortName}</span>
               <span><strong>{site.name}</strong><small>AI &amp; full stack · 20 years</small></span>
             </Link>

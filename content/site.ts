@@ -7,13 +7,13 @@ export const site = {
   headline: "AI features and full-stack apps,",
   headlineAccent: "built to hold up in production.",
   summary:
-    "I'm Nick Carter, a senior engineer with 20 years of delivery for Deloitte, VF Corp, and Blue Cross Blue Shield. I build LLM integrations with guardrails, and the React, Node, and Python systems around them. Taking contract work now.",
+    "I’m Nick Carter, a senior engineer with 20 years of delivery for Deloitte, VF Corp, and Blue Cross Blue Shield. I build LLM integrations with guardrails, and the React, Node, and Python systems around them. Taking contract work now.",
   availability: "Taking new contract work · Remote, US Eastern · Hourly or fixed-scope",
   fullTimeNote: "Also open to senior full-time roles.",
   description:
     "Nick Carter, senior AI and full-stack engineer. LLM features with guardrails, React, Node, and Python builds. 20 years. Taking contract work.",
   contactPrompt:
-    "Have a project in mind? Tell me what you're building, your timeline, and your budget range. I reply within one business day.",
+    "Have a project in mind? Tell me what you’re building, your timeline, and your budget range. I reply within one business day.",
   // The /resume pages keep the full-time framing.
   resumeSummary:
     "I'm Nicholas Carter, a software engineer with 20+ years across web, mobile, and backend development. At AgileThought, I delivered software for Deloitte and Bankers Surety. At Mad Mobile, I led retail application delivery. My work now extends into data systems and AI infrastructure.",
