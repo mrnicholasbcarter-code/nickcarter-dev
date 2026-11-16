@@ -7,7 +7,7 @@ export const site = {
   headline: "AI features and full-stack apps,",
   headlineAccent: "built to hold up in production.",
   summary:
-    "I’m Nicholas Carter, a software engineer with 20+ years across web, mobile, and backend development. At AgileThought, I led a Deloitte Symphony team and built Bankers Surety’s platform end to end. At Mad Mobile, I owned VF Corp’s MPOS and Sysco’s inventory apps. My work now extends into data systems and AI infrastructure.",
+    "I’m Nick Carter, a senior engineer with 20 years of delivery for Deloitte, VF Corp, and Blue Cross Blue Shield. I build LLM integrations with guardrails, and the React, Node, and Python systems around them. Taking contract work now.",
   availability: "Taking new contract work · Remote, US Eastern · Hourly or fixed-scope",
   fullTimeNote: "Also open to senior full-time roles.",
   description:
@@ -16,7 +16,7 @@ export const site = {
     "Have a project in mind? Tell me what you’re building, your timeline, and your budget range. I reply within one business day.",
   // The /resume pages keep the full-time framing.
   resumeSummary:
-    "I’m Nicholas Carter, a software engineer with 20+ years across web, mobile, and backend development. At AgileThought, I delivered software for Deloitte and Bankers Surety. At Mad Mobile, I led retail application delivery. My work now extends into data systems and AI infrastructure.",
+    "I’m Nicholas Carter, a software engineer with 20+ years across web, mobile, and backend development. At AgileThought, I led a Deloitte Symphony team and built Bankers Surety’s platform end to end. At Mad Mobile, I owned VF Corp’s MPOS and Sysco’s inventory apps. My work now extends into data systems and AI infrastructure.",
   resumeAvailability: "Open to senior/staff engineering roles and selected client work",
   email: "nick@nickcarter.dev",
   url: "https://nickcarter.dev",
@@ -66,7 +66,6 @@ export type Project = {
   proof: string;
   href: string;
   docsHref?: string;
-  caseStudyHref?: string;
   evidenceHref?: string;
   tags: string[];
   featured?: boolean;
@@ -82,8 +81,6 @@ export const projects: Project[] = [
       "Credential-free demo with injected worker faults and a reroute to another model, ending in a verified receipt. It uses fixtures, not live providers.",
     href: "https://github.com/mrnicholasbcarter-code/verdict-core",
     docsHref: "/docs/verdict",
-    caseStudyHref:
-      "https://github.com/mrnicholasbcarter-code/verdict-core/blob/main/docs/portfolio/VERDICT_PROOF_CASE_STUDY.md",
     evidenceHref: "/docs/verdict/evidence",
     tags: ["Python", "control plane", "receipts", "failover"],
     featured: true,
@@ -131,7 +128,7 @@ export const skillGroups = [
   },
   {
     name: "Full-stack & mobile",
-    skills: ["JavaScript & TypeScript", "React & React Native", "Angular & AngularJS", "HTML & CSS", "Responsive UI & WCAG", "CMS & e-commerce"],
+    skills: ["JavaScript & TypeScript", "React & React Native", "Angular (1 through 17)", "HTML & CSS", "Responsive UI & WCAG", "CMS & e-commerce"],
   },
   {
     name: "Platform & leadership",
@@ -146,7 +143,7 @@ export const engineeringPrinciples = [
   },
   {
     title: "Stay involved through release",
-    copy: "At Bankers Surety, my work spanned C# services, Angular interfaces, integrations, and build pipelines. I’m comfortable following a feature across those boundaries and into release support.",
+    copy: "At Bankers Surety, I built the platform end to end, from C# services and Angular interfaces to integrations and build pipelines, and led the client relationship. I’m comfortable following a feature across those boundaries and into release support.",
   },
   {
     title: "Help the team carry it forward",
